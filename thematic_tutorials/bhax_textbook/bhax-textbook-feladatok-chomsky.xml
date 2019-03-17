@@ -16,9 +16,21 @@
         <para>
             Megoldás forrása:                
         </para>
+        <figure>
+        	<title>Turing gép</title>
+                    <mediaobject>
+                        <imageobject>
+                            <imagedata fileref="programs/unary.png" format="PNG" scale="50"/>
+                        </imageobject>
+                    </mediaobject>
+            </figure>
+
         <para>
-            Tanulságok, tapasztalatok, magyarázat...
+            
+            Ez a turing gép végigmegy a beolvasandó adatokon, ha egyenlőség jelet talál , akkor kivon egyet az előtte lévő számból. Ez a folyamat addig ismétlődik amíg az előtte lévő szám le nem nullázódik. Mivel itt 0 van, de előtte 1 van, ezért a 0-ból 9 lesz és az 1-ből 0.
+            A kivont egyeseket kiírja a tárolóra, ezért a végén egy egyesekből álló sorozatot kapunk. Az ebben a sorozatban lévő egyesek száma megegyezik a kiindulási szám értékével.
         </para>
+
     </section>        
         
     <section>
@@ -32,9 +44,49 @@
         <para>
             Megoldás forrása:                
         </para>
-        <para>
-            Tanulságok, tapasztalatok, magyarázat...
+        <para>    
+        <programlisting>
+változók: A, B, C 
+konstansok: a, b, c 
+képzési szabályok:
+A -> aAB, A -> aC, CB -> bCc, cB -> Bc, C -> bc
+A kezdő szimbólum az A.
+
+                A (A -> aAB)
+                aAB ( A -> aAB)
+                aaABB ( A -> aAB)
+                aaaABBB ( A -> aC)
+                aaaaCBBB (CB -> bCc)
+                aaaabCcBB (cB -> Bc)
+                aaaabCBcB (cB -> Bc)
+                aaaabCBBc (CB -> bCc)
+                aaaabbCcBc (cB -> Bc)
+                aaaabbCBcc (CB -> bCc)
+                aaaabbbCccc (C -> bc)
+                aaaabbbbcccc 
+            </programlisting>        
+           
+            1-es típusú (környezetfüggő) nyelvtan, ha minden szabálya αAγ->αβγ alakú, ahol A∈N,α,γ∈(N∪T)∗,β∈(N∪T)+. Ezenkívül megengedhető az S->εs zabály is, ha S nem szerepel egyetlen szabály jobb oldalán sem.
         </para>
+        <para>            
+             <programlisting>
+változók: S, X, Y 
+konstansok: a, b, c 
+képzési szabályok:
+S -> abc, S -> aXbc, Xb -> bX, Xc -> Ybcc, bY -> Yb, aY -> aaX, aY -> aa 
+A kezdő szimbólum az S.
+
+				S (S -> aXbc)
+				aXbc (Xb -> bX)
+				abXc (Xc -> Ybcc)
+				abYbcc (bY -> Yb)
+				aYbbcc (aY -> aa)
+				aabbcc 
+            </programlisting>
+            
+        </para>
+
+
     </section>        
                 
     <section>
@@ -50,9 +102,55 @@
         <para>
             Megoldás forrása:  
         </para>
-        <para>
-            Tanulságok, tapasztalatok, magyarázat...
-        </para>
+        <screen>
+        <![CDATA[
+<utasítás>::=
+    <összetett_utasítás> | <feltételes_utasítás> | <iterációs_utasítás> | 
+    <vezérlés_átadó_utasítás> |  <címkézett_utasítás> | <kifejezés_utasítás>| <nulla_utasítás>
+<összetett_utasítás>::= <deklaráció_lista> | <utasításlista>
+<deklaráció_lista>::= <deklaráció>
+<utasításlista>::= <utasítás>
+<feltételes_utasítás>::= if | if else | switch
+<iterációs_utasítás>::= while | do while | for
+<vezérlés_átadó_utasítás>::= break | return | goto | continue
+<címkézett_utasítás>::= <azonosító>
+<kifejezés_utasítás>::= <kifejezés>
+<nulla_utasítás>::= ;
+        ]]>
+    </screen>
+
+                                                                      
+ <programlisting>
+         <![CDATA[
+    #include <stdio.h>
+    int main ()
+    {
+      // asd
+      printf ("Hello World\n");
+    }
+ ]]>  
+         </programlisting>
+
+         <para>C99-el lefordul:</para>
+ <screen>
+         <![CDATA[
+kewo@kewo-X540SA:~/Downloads/wat/bhax/programs$ gcc hello.c -o hello -std=c99
+kewo@kewo-X540SA:~/Downloads/wat/bhax/programs$ 
+ ]]>
+ </screen>
+ 		<para>C89-el nem fordul le:</para>
+    
+ <screen>
+         <![CDATA[
+kewo@kewo-X540SA:~/Downloads/wat/bhax/programs$ gcc hello.c -o hello -std=c89
+hello.c: In function ‘main’:
+hello.c:4:7: error: C++ style comments are not allowed in ISO C90
+       // asd
+       ^
+hello.c:4:7: error: (this will be reported only once per input file)
+kewo@kewo-X540SA:~/Downloads/wat/bhax/programs$ 
+ ]]>
+</screen>
     </section>                     
 
     <section>
@@ -69,8 +167,57 @@
             Megoldás forrása:  
         </para>
         <para>
-            Tanulságok, tapasztalatok, magyarázat...
+        	Ezt a programot lexer segítségével fogjuk megoldani. A lexer egy általunk megadott minta alapján fogja legenerálni a lexikális elemzőnket.
         </para>
+       
+        <programlisting>
+         <![CDATA[
+%{
+#include <stdio.h>
+int realnumbers = 0;
+%}
+digit	[0-9]
+%%
+{digit}*(\.{digit}+)?	{++realnumbers; 
+    printf("[realnum=%s %f]", yytext, atof(yytext));}
+%%
+int
+main ()
+{
+ yylex ();
+ printf("The number of real numbers is %d\n", realnumbers);
+ return 0;
+}         
+         ]]>
+         
+         </programlisting>
+         <para>
+            Először is létrehozunk egy int változót amiben fogjuk számolni a valós számok előfordulását.
+         	Ezután pedig definiáljuk digit néven 0-9 ig a számjegyeket.  
+    </para>
+    <para>
+            Az ezt követő részben adjuk meg a mintát. A digit után a csillag, azt jelenti, hogy digitből
+            bármennyi lehet. A . azt jelenti, hogy bármilyen karakterre rá lehet illeszteni, azonban
+            nekünk le kell védeni \ jellel és így a valós számoknál lévő pontot fogja értelmezni. Ezután megint jönnek a számjegyek, a + 
+            pedig azt jelzi, hogy legalább 1 számnak kell lennie a pont után. Ha van találat a mintára, akkor növeljük a realnumbers változót.
+            Ezután kiiratjuk a felismert számot, illetve az atof al átkonvertált double verzióját is.
+            Magában a programban meghívjuk a lexert majdpedig kiíratjuk a valós számok számát.
+            Fordításkor hozzá kell csatolnunk a flex könyvtárat.   
+    </para>    
+    <screen>
+        <![CDATA[
+kewo@kewo-X540SA:~/Downloads/wat/bhax/programs$ lex -o valos_szam.c valos_szam.l 
+kewo@kewo-X540SA:~/Downloads/wat/bhax/programs$ gcc valos_szam.c -o valos_szam -lfl
+        ]]>
+</screen>
+<screen>
+<![CDATA[
+kewo@kewo-X540SA:~/Downloads/wat/bhax/thematic_tutorials/bhax_textbook/programs$ ./valos_szam 
+2324.342 23132 43333 342.232
+[realnum=2324.342 2324.342000] [realnum=23132 23132.000000] [realnum=43333 43333.000000] [realnum=342.232 342.232000]
+The number of real numbers is 4
+        ]]>
+	</screen>
     </section>                     
 
     <section>
@@ -85,8 +232,139 @@
             Megoldás forrása:  
         </para>
         <para>
-            Tanulságok, tapasztalatok, magyarázat...
+            Az előző feladathoz hasonlóan a lexer egy általunk megadott minta alapján jogja létrehozni a lexikális elemzőnket.
+            Ebben a feldatban a begépelt szöveget leet nyelvre fogjuk konvertálni. A leet nyelv az online világ szlengje. Elsősorban üzenetek titkosítására szolgált, majd később a játékosok neveiben fordult leginkább elő.
         </para>
+        <programlisting>
+         <![CDATA[
+   /*
+Forditas:
+$ lex -o l337d1c7.c l337d1c7.l 
+
+Futtatas:
+$ gcc l337d1c7.c -o l337d1c7 -lfl
+(kilépés az input vége, azaz Ctrl+D)
+
+Copyright (C) 2019
+Norbert Bátfai, batfai.norbert@inf.unideb.hu
+
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+*/
+%{
+  #include <stdio.h>
+  #include <stdlib.h>
+  #include <time.h>
+  #include <ctype.h>
+
+  #define L337SIZE (sizeof l337d1c7 / sizeof (struct cipher))
+    
+  struct cipher {
+    char c;
+    char *leet[4];
+  } l337d1c7 [] = {
+
+  {'a', {"4", "4", "@", "/-\\"}},
+  {'b', {"b", "8", "|3", "|}"}},
+  {'c', {"c", "(", "<", "{"}},
+  {'d', {"d", "|)", "|]", "|}"}},
+  {'e', {"3", "3", "3", "3"}},
+  {'f', {"f", "|=", "ph", "|#"}},
+  {'g', {"g", "6", "[", "[+"}},
+  {'h', {"h", "4", "|-|", "[-]"}},
+  {'i', {"1", "1", "|", "!"}},
+  {'j', {"j", "7", "_|", "_/"}},
+  {'k', {"k", "|<", "1<", "|{"}},
+  {'l', {"l", "1", "|", "|_"}},
+  {'m', {"m", "44", "(V)", "|\\/|"}},
+  {'n', {"n", "|\\|", "/\\/", "/V"}},
+  {'o', {"0", "0", "()", "[]"}},
+  {'p', {"p", "/o", "|D", "|o"}},
+  {'q', {"q", "9", "O_", "(,)"}},
+  {'r', {"r", "12", "12", "|2"}},
+  {'s', {"s", "5", "$", "$"}},
+  {'t', {"t", "7", "7", "'|'"}},
+  {'u', {"u", "|_|", "(_)", "[_]"}},
+  {'v', {"v", "\\/", "\\/", "\\/"}},
+  {'w', {"w", "VV", "\\/\\/", "(/\\)"}},
+  {'x', {"x", "%", ")(", ")("}},
+  {'y', {"y", "", "", ""}},
+  {'z', {"z", "2", "7_", ">_"}},
+  
+  {'0', {"D", "0", "D", "0"}},
+  {'1', {"I", "I", "L", "L"}},
+  {'2', {"Z", "Z", "Z", "e"}},
+  {'3', {"E", "E", "E", "E"}},
+  {'4', {"h", "h", "A", "A"}},
+  {'5', {"S", "S", "S", "S"}},
+  {'6', {"b", "b", "G", "G"}},
+  {'7', {"T", "T", "j", "j"}},
+  {'8', {"X", "X", "X", "X"}},
+  {'9', {"g", "g", "j", "j"}}
+  
+// https://simple.wikipedia.org/wiki/Leet
+  };
+  
+%}
+%%
+.	{
+	  
+	  int found = 0;
+	  for(int i=0; i<L337SIZE; ++i)
+	  {
+	  
+	    if(l337d1c7[i].c == tolower(*yytext))
+	    {
+	    
+	      int r = 1+(int) (100.0*rand()/(RAND_MAX+1.0));
+	    
+          if(r<91)
+	        printf("%s", l337d1c7[i].leet[0]);
+          else if(r<95)
+	        printf("%s", l337d1c7[i].leet[1]);
+	      else if(r<98)
+	        printf("%s", l337d1c7[i].leet[2]);
+	      else 
+	        printf("%s", l337d1c7[i].leet[3]);
+
+	      found = 1;
+	      break;
+	    }
+	    
+	  }
+	  
+	  if(!found)
+	     printf("%c", *yytext);	  
+	  
+	}
+%%
+int 
+main()
+{
+  srand(time(NULL)+getpid());
+  yylex();
+  return 0;
+}
+ ]]>  
+         </programlisting>
+
+         <programlisting>
+         	kewo@kewo-X540SA:~/Downloads/wat/bhax/programs$ ./l337d1c7 
+kewo
+k3w0
+Koos Zoltan
+k00s >_0lt4n
+         </programlisting>
     </section>                     
 
 
@@ -114,34 +392,96 @@
             <listitem>                                    
                 <programlisting><![CDATA[if(signal(SIGINT, SIG_IGN)!=SIG_IGN)
     signal(SIGINT, jelkezelo);]]></programlisting>
+                <para>Ha a SIGINT jel kezelése nem volt figyelmen kívűl hagyva, akkor a jelkezelo függvény kezelje, máskülönben figyelmen kívűl 
+                        legyen hagyva.
+                </para>
             </listitem>
             <listitem>                                    
-                <programlisting><![CDATA[for(i=0; i<5; ++i)]]></programlisting>            
-            </listitem>
-            <listitem>                                    
-
-                <programlisting><![CDATA[for(i=0; i<5; i++)]]></programlisting>            
-            </listitem>
-            <listitem>                                    
-
-                <programlisting><![CDATA[for(i=0; i<5; tomb[i] = i++)]]></programlisting>            
+                <programlisting><![CDATA[for(i=0; i<5; ++i)]]></programlisting>  
+                <para>A for ciklussal 0-tól 4-ig megyünk, az i-t növelve.Az ++i megnöveli
+                    az i étékét majd visszaadja az 1-el megnövelt értéket.
+                </para>          
             </listitem>
             <listitem>                                    
 
-                <programlisting><![CDATA[for(i=0; i<n && (*d++ = *s++); ++i)]]></programlisting>            
+                <programlisting><![CDATA[for(i=0; i<5; i++)]]></programlisting>   
+                 <para>A for ciklussal 0-tól 4-ig megyünk, az i-t növelve. Az i++ először visszaadja az eredeti értéket
+                 	majd megnöveli az i értékét.
+                </para>          
             </listitem>
             <listitem>                                    
 
-                <programlisting><![CDATA[printf("%d %d", f(a, ++a), f(++a, a));]]></programlisting>            
+                <programlisting><![CDATA[for(i=0; i<5; tomb[i] = i++)]]></programlisting>       
+                <para>A for ciklussal 0-tól 4-ig megyünk, eközben tomb i edik elemét megváltoztatjuk arra az i-re ami megnövelés előtt volt. </para>
+            
+            <screen>
+        <![CDATA[
+kewo@kewo-X540SA:~/Downloads/wat/bhax/programs$ splint wat4.c
+Splint 3.1.2 --- 03 May 2009
+
+wat4.c: (in function main)
+wat4.c:12:28: Expression has undefined behavior (left operand uses i, modified
+                 by right operand): tomb[i] = i++
+  Code has unspecified behavior. Order of evaluation of function parameters or
+  subexpressions is not defined, so if a value is used and modified in
+  different places not separated by a sequence point constraining evaluation
+  order, then the result of the expression is unspecified. (Use -evalorder to
+  inhibit warning)
+
+Finished checking --- 1 code warning
+
+        ]]>
+    </screen>
             </listitem>
+            
             <listitem>                                    
 
-                <programlisting><![CDATA[printf("%d %d", f(a), a);]]></programlisting>            
+                <programlisting><![CDATA[for(i=0; i<n && (*d++ = *s++); ++i)]]></programlisting> 
+                <para>  
+                    A for ciklussal 0-tól megyünk, addig amíg i kisebb mint n és a d mutató által mutatatott tömb eleme
+                     egyenlő az s mutató által mutatatott tömb elemével. 
+                </para>           
+                <programlisting><![CDATA[
+                    wat4.c:13:19: Right operand of && is non-boolean (int): i < n && (*d++ = *s++)
+  The operand of a boolean operator is not a boolean.
+  ]]></programlisting>
             </listitem>
+     
             <listitem>                                    
 
-                <programlisting><![CDATA[printf("%d %d", f(&a), a);]]></programlisting>            
+                <programlisting><![CDATA[printf("%d %d", f(a, ++a), f(++a, a));]]></programlisting>  
+                 <para> Kiíratunk két egész számot. Mindkettőt az f függvény adja vissza. Először az f függvénynek
+                        átadjuk az a változót és az a változó 1-el megnövelt értékét. Másodszor pedig az f-nek, az a változó 1-el megnövelt értékét és a-t adjuk.                       
+                 </para> 
+                  <screen>
+        <![CDATA[
+wat4.c:13:19: Argument 2 modifies a, used by argument 3 (order of evaluation of
+    actual parameters is undefined): printf("%d %d", f(a, ++a), f(++a, a))
+  Code has unspecified behavior. Order of evaluation of function parameters or
+  subexpressions is not defined, so if a value is used and modified in
+  different places not separated by a sequence point constraining evaluation
+  order, then the result of the expression is unspecified. (Use -evalorder to
+  inhibit warning)
+
+        ]]>
+</screen>        
             </listitem>
+                   
+            <listitem>                                    
+
+                <programlisting><![CDATA[printf("%d %d", f(a), a);]]></programlisting>        
+                    <para> Két egész számot iratunk ki, az egyik az f függvény a változó felhasználása által visszaadott szám, a másik pedig az a változó.</para>
+           
+            </listitem>
+
+            <listitem>                                    
+
+                <programlisting><![CDATA[printf("%d %d", f(&a), a);]]></programlisting>          
+                 <para> Két egész számot iratunk ki, az egyik az f függvény a változó memóriacímének felhasználásával visszaadott szám, a másik pedig az a változó.</para>
+           
+            </listitem>
+            
+
         </orderedlist>
         <para>
             Megoldás forrása:  
@@ -151,9 +491,7 @@
             Megoldás videó: 
         </para>
 
-        <para>
-            Tanulságok, tapasztalatok, magyarázat...
-        </para>
+        
 
     </section>                     
 
@@ -177,10 +515,27 @@ $(\exists y \forall x (y<x) \supset \neg (x \text{ prím}))$
         <para>
             Megoldás videó: <link xlink:href="https://youtu.be/ZexiPy3ZxsA">https://youtu.be/ZexiPy3ZxsA</link>, <link xlink:href="https://youtu.be/AJSXOQFF_wk">https://youtu.be/AJSXOQFF_wk</link>
         </para>
-
         <para>
-            Tanulságok, tapasztalatok, magyarázat...
+        	A feladatban szereplő kifejezések jelentése:
+        	<programlisting>
+        	-forall: univerzális kvantor
+        	-exist: egzisztenciális kvantor
+        	-wedge: implikáció
+        	-supset: konjukció
+        	-neg: negáció
+        	-S: rákövetkező
+        </programlisting>
+		</para>
+        <para>
+        	Ezeket a kifejezéseket felhasználva az alábbi mondatokat állíthatjuk elő:
+        	<programlisting>
+	1. Minden x-hez létezik olyan y, amelynél ha x kisebb, akkor y prím.
+	2. Minden x-hez létezik olyan y, amelynél ha x kisebb, akkor y prím, és ha y prím, akkor annak második rákövetkezője is prím.
+	3. Létezik olyan y, amelyhez minden x esetén az x prím ,és x kisebb, mint y.
+	4. Létezik olyan y, amelyhez minden x esetén az x nagyobb, és x nem prím.
+            </programlisting>   
         </para>
+
     </section>                                                                                                                                                                            
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
     <section>
@@ -222,6 +577,28 @@ $(\exists y \forall x (y<x) \supset \neg (x \text{ prím}))$
                 <para>függvénymutató egy egészet visszaadó és két egészet kapó függvényre mutató mutatót visszaadó, egészet kapó függvényre</para>                        
             </listitem>            
         </itemizedlist>            
+		<programlisting><![CDATA[
+#include <iostream>
+
+int i = 0;
+int a = 5;  
+int *b = &a; 
+int &r = a;
+int c[5] = {0,1,2,3,4};
+int (&tr)[5] = c;
+int *d[5];
+int *h ();
+int *(*l) ();
+int (*v (int c)) (int a, int b);
+int (*(*z) (int)) (int, int);
+
+int main()
+{
+	
+
+	return 0;
+}
+]]></programlisting> 
 
        <para>
             Mit vezetnek be a programba a következő nevek?
@@ -229,36 +606,48 @@ $(\exists y \forall x (y<x) \supset \neg (x \text{ prím}))$
 
         <itemizedlist>
             <listitem>
-                <programlisting><![CDATA[int a;]]></programlisting>            
+                <programlisting><![CDATA[int a;]]></programlisting>  
+                <para>Egy int típusú a nevű változó.</para>          
             </listitem>
             <listitem>
-                <programlisting><![CDATA[int *b = &a;]]></programlisting>            
+                <programlisting><![CDATA[int *b = &a;]]></programlisting>   
+                <para>b egészre mutató mutató a-ra mutat.</para>          
             </listitem>
             <listitem>
-                <programlisting><![CDATA[int &r = a;]]></programlisting>            
+                <programlisting><![CDATA[int &r = a;]]></programlisting>
+                <para>r egeszre mutató mutató, ami a címet tartalmazza.</para>             
             </listitem>
             <listitem>
-                <programlisting><![CDATA[int c[5];]]></programlisting>            
+                <programlisting><![CDATA[int c[5];]]></programlisting>     
+                <para>Öt elemű egészekból álló tömb.</para>        
             </listitem>
             <listitem>
-                <programlisting><![CDATA[int (&tr)[5] = c;]]></programlisting>            
+                <programlisting><![CDATA[int (&tr)[5] = c;]]></programlisting>  
+                <para>Öt elemű egészekből álló tombre mutató mutató, ami a c tömbre mutat.</para>           
             </listitem>
             <listitem>
-                <programlisting><![CDATA[int *d[5];]]></programlisting>            
+                <programlisting><![CDATA[int *d[5];]]></programlisting> 
+                <para>5 elemű egészekre mutató mutatókból álló tömb.</para>        
             </listitem>
             <listitem>
-                <programlisting><![CDATA[int *h ();]]></programlisting>            
+                <programlisting><![CDATA[int *h ();]]></programlisting> 
+                <para>Egy egésszel visszatérő paraméter nélküli függvényre mutató mutató.</para>           
             </listitem>
             <listitem>
-                <programlisting><![CDATA[int *(*l) ();]]></programlisting>            
+                <programlisting><![CDATA[int *(*l) ();]]></programlisting> 
+                <para>Egy egészre mutató mutatóval visszatérő, paraméter nélküli függvényre mutató mutató.</para>           
             </listitem>
             <listitem>
-                <programlisting><![CDATA[int (*v (int c)) (int a, int b)]]></programlisting>            
+                <programlisting><![CDATA[int (*v (int c)) (int a, int b)]]></programlisting>   
+                <para>Egy egésszel visszatérő 2 egészet váró függvényre mutató mutatóval 
+                        visszatérő 2 egészet váró függvény.
+                </para>         
             </listitem>            
             <listitem>
-                <programlisting><![CDATA[int (*(*z) (int)) (int, int);]]></programlisting>            
+                <programlisting><![CDATA[int (*(*z) (int)) (int, int);]]></programlisting> 
+                <para>Függvénymutató egy egészet visszaadó és két egészet kapó függvényre mutató mutatót visszaadó, egészet kapó függvényre mutató mutató. </para>        
             </listitem>            
-        </itemizedlist>       
+</itemizedlist>        
 
 
         <para>
@@ -267,9 +656,7 @@ $(\exists y \forall x (y<x) \supset \neg (x \text{ prím}))$
         <para>
             Megoldás forrása:  
         </para>
-        <para>
-            Tanulságok, tapasztalatok, magyarázat...
-        </para>
+        
     </section>                     
 
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         

@@ -25,5 +25,27 @@
                 <link xlink:href="https://arato.inf.unideb.hu/batfai.norbert/">https://arato.inf.unideb.hu/batfai.norbert/</link>
             </otheraddr>
         </address>
-    </author>    
+    </author>  
+    <author>
+        <personname>
+            <surname>Koós</surname>
+            <firstname>Zoltán</firstname>        
+        </personname>    
+        <affiliation>
+            <shortaffil>E. Hallg.</shortaffil>
+            <jobtitle>Egyetemi hallgató</jobtitle>
+            <orgname>Debreceni Egyetem</orgname>
+            <orgdiv>Informatikai Kar</orgdiv>
+            <address>
+                <email>koos.zoltan.iso@gmail.com</email>                
+            </address>
+        </affiliation>
+        <address>
+            <street>Zelemér u. 9.</street>
+            <city>Bocskaikert</city>
+            <postcode>4241</postcode>
+            <country>Magyarország</country>
+        </address>
+    </author> 
+ 
 </authorgroup>
