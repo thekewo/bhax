@@ -1,0 +1,95 @@
+<chapter xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude" version="5.0" xml:lang="hu">
+    <info>
+        <title>Helló, Gutenberg!</title>
+        <keywordset>
+            <keyword/>
+        </keywordset>
+        <cover>
+            <para>
+                Programozás tankönyvek rövid olvasónaplói.
+            </para>
+        </cover>
+    </info>
+    <section>
+        <title>Juhász István - Magas szintű programozási nyelvek 1</title>     
+        <para>
+A programnyelvek három szintjét különböztetjük meg: gépi nyelv, assembly szintű nyelv, magas szintű nyelv. A magas
+szintő nyelven megírt programot forrásprogramnak, vagy forrásszövegnek nevezzük. Az összeállításra vonatkozó szabályokat szintaktikai, a jelentésbelieket pedig szemantikai szabályoknak nevezzük. Ezek a szabályok határozzák meg a programot. A fordító program a következő lépések alapján teszi a megírt kódot a számítógép álltal értelmezhetővé: lexikális,szintaktikai,szemantikai elemzés -> kódgenerálás. Vannak imperatív/algoritmikus és deklaratív/nem algoritmikus nyelvek. Olyan nyelvek is léteznek amelyek nem sorolhatóak be ezekbe a kategóriákba. Minden program forrásszövegének legkisebb alkotórészei a karakterek. A forrásszöveg összeállításánál alapvető a karakterkészlet, ennek elemei jelenhetnek meg az adott nyelv programjaiban, ezekből állíthatók össze a bonyolultabb nyelvi elemek. Az eljárásorientált nyelvek esetén ezek a következők: lexikális,fordítási és szintaktikai egységek, utasítások, programegységek, program. Egy nyelv saját karakterkészletében az alábbiak találhatóak: betűk,számjegyek,egyéb karakterek.
+        </para>   
+        
+
+    </section>        
+    <section>
+        <title>Programozás bevezetés</title>
+        <para>                
+            <citation>KERNIGHANRITCHIE</citation>
+        </para>
+        <para>
+            Megoldás videó: <link xlink:href="https://youtu.be/zmfT9miB-jY">https://youtu.be/zmfT9miB-jY</link>
+        </para> 
+        <programlisting>
+         <![CDATA[
+main ()
+{
+ 
+printf ("Figyelem, ");
+   printf ("emberek!");
+   printf ("\ n");
+}
+ ]]>  
+         </programlisting> 
+         <para>
+            A { } kapcsos zárójelek a függvényt alkotó utasításokat zárják közre. Egy tetszőleges számú
+karakterből álló, idézőjelek (") közé zárt karaktersorozatot karakterláncnak, karakter-állandónak
+(stringnek, ill. stringkonstansnak) nevezünk. A karakterláncban előforduló \n karaktersorozat az újsor
+karakter C-beli jelölésmódja. Hatására a kiírás a következő sor bal szélén folytatódik. A printf-el kiíratjuk a benne lévő stringeket.
+         </para>
+<programlisting>
+         <![CDATA[
+/* Fahrenheit­Celsius táblázat kinyomtatása  f = 0, 20, . . ., 300 
+értékekre */
+ main ()
+ {
+int lower, upper, step;
+ 
+float fahr, celsius;
+lower = 0; /* A hőmérséklet­táblázat alsó határa */
+upper = 300;  /* felső határ */
+ 
+step = 20; /* lépésköz */
+ 
+fahr = lower;
+ 
+while (fahr <= upper) {
+ 
+celsius = (5.0 / 9.0) * (fahr – 32.0);
+  
+printf ("%4.0f %6.1f \n", fahr, celsius);
+  
+fahr = fahr + step;
+   }
+ }
+ ]]>  
+         </programlisting> 
+         <para>
+Az /* .. */ -ba írt szöveg csak megjegyzés, így ami itt van az nem vesz részt a programunk működésében. Az int típus azt jelenti, hogy a felsorolt változók egész (integer) típusúak. float jelöli a lebegőpontos (floating point) változókat, vagyis az olyan számokat, amelyeknek tört részük is van.
+Megjegyzések mindenütt előfordulhatnak, ahol szóköz vagy újsor előfordulhat. A C nyelvben használat előtt minden változót deklarálni kell, általában a függvény elején, az első végrehajtható utasítás előtt.
+         </para>
+               
+    </section>        
+    <section>
+        <title>Programozás</title>
+        <para>                
+            <citation>BMECPP</citation>
+        </para>
+        
+        <para> 
+             A c++ a c nyelvre épül. Az első c++ fordítók c kódokat generáltak. A ma használt fordítók c és c++ ra is tudnak fordítani. C++ nyelvben az üres paraméterlista egy void paraméter megadásával egyenlő. C-ben így írnánk: void f(){} , C++-ban pedig: void f(void){}. C++-ban a main függvény kétféle képpen adhatjuk meg: int main(){}, int main(int argc, char* argv[]){}. Az argc-ben a parancssor-argumentumok számát, argv-ben pedig a parancssor-argumentumokat kapjuk. Ha nem írunk return-t, akkor a fordító autómatikusan return 0; utasítást fordít a kódba.
+             A bool típus a logika igaz/hamis értéket képes jelenteni. Ezek a változók true vagy false érkéket vehetnek fel: bool a = true; bool b = false;. Minden olyan helyen állhat változódeklaráció, ahol utasítás állhat. C++ nyelven megadhatunk alapértelmezett függvényargumentumokat. Ha nem adunk meg saját értékeket, akkor ezek kerülnek felhasználásra.
+
+        </para>
+
+
+
+    </section>        
+</chapter>                
