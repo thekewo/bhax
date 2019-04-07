@@ -20,9 +20,166 @@
             Megoldás forrása:                
         </para>
         <para>
-            Tanulságok, tapasztalatok, magyarázat... térj ki arra is, hogy a JDK forrásaiban a Sun programozói
-            pont úgy csinálták meg ahogyan te is, azaz az OO nemhogy nem nehéz, hanem éppen természetes neked!
-        </para>                
+            Polártranszformáció segítségével random számokat fogunk kiszámolni. A feladatban felhasznált algoritmust a Java random szám
+            generátor függvénye is használja.
+        </para> 
+        <programlisting language="c++">
+<![CDATA[ 
+#include <iostream>
+#include <cstdlib>	
+#include <cmath>	
+#include <ctime>	
+
+
+
+class PolarGen {
+
+	public:
+
+		PolarGen(); //konstruktor
+
+		~PolarGen(){} //destruktor
+
+		double kovetkezo(); //random lekérés
+
+	private:
+
+		bool nincsTarolt;
+		double tarolt; 
+
+};
+
+
+PolarGen::PolarGen() { //a konstruktor kifejtése
+	nincsTarolt = false;
+	std::srand (std::time(NULL)); 
+};
+
+
+double PolarGen::kovetkezo() { 
+	if (nincsTarolt)
+{
+		double u1, u2, v1, v2, w;
+
+		do{
+			u1 = std::rand () / (RAND_MAX + 1.0); 
+			u2 = std::rand () / (RAND_MAX + 1.0);
+			v1 = 2 * u1 - 1;
+			v2 = 2 * u2 - 1;
+			w = v1 * v1 + v2 * v2;
+		    }
+		while (w > 1);
+
+		double r = std::sqrt ((-2 * std::log (w)) / w);
+
+		tarolt = r * v2; 
+		nincsTarolt = !nincsTarolt;
+
+		return r * v1; 
+	}
+	
+	else
+	{
+		nincsTarolt = !nincsTarolt; //ha van korábbi random érték, akkor azt adja vissza
+		return tarolt;
+	}
+};    
+
+int main() 
+{
+
+	PolarGen rnd;
+
+	for (int i = 0; i < 10; ++i) std::cout << rnd.kovetkezo() << std::endl; 
+}
+
+]]>
+        </programlisting>
+        <para>
+            Elsőként létrehozunk egy osztályt, amiben a véletlen számokat fogjuk generálni. Ennek van privát és publikus része. Ami a public részben van az elérhető a class on kívül is, viszont a private részben szereplő elemek csak azon az osztályon belül érhetőek el. A konstruktorral létrehozzuk a PolarGen típusú objektumokat. A kovetkezo() függvényben használjuk az algoritmust, amivel ellenőrizzük, hogy van tárolt véletlen számunk vagy nincs. Ha nincs, akkor létrehozunk kettőt. Az elsőt vissza adjuk, a másodikat eltároljuk. A mainben létrehozunk egy PolarGen változót és generálunk 10 véletlen számot.
+        </para> 
+         <screen>
+<![CDATA[
+kewo@kewo-X540SA:~/Downloads/wat/bhax/thematic_tutorials/bhax_textbook/programs/polar$ g++ polargen.cpp -o p
+kewo@kewo-X540SA:~/Downloads/wat/bhax/thematic_tutorials/bhax_textbook/programs/polar$ ./p
+0
+-0.281036
+0.248154
+1.02943
+-0.955219
+0.668125
+-0.779346
+0.181579
+-0.724205
+0.214865
+
+ ]]>
+</screen>  
+<programlisting language="java">
+<![CDATA[ 
+public class PolarGenerator
+{
+    boolean nincsTarolt = true;
+    double tarolt;
+    
+    public PolarGenerator()
+    {
+        nincsTarolt = true;
+    }
+    
+    public double kovetkezo() 
+    {
+        if(nincsTarolt)
+        {
+            double u1, u2, v1, v2, w;
+            do{
+                u1 = Math.random();
+                u2 = Math.random();
+                v1 = 2* u1 -1;
+                v2 = 2* u2 -1;
+                w = v1*v1 + v2*v2;
+            } while (w>1);
+            
+            double r = Math.sqrt((-2 * Math.log(w) / w));
+            tarolt = r * v2;
+            nincsTarolt = !nincsTarolt;
+            return r * v1;
+        }
+        else
+        {
+            nincsTarolt = !nincsTarolt;
+            return tarolt;
+        }
+    }
+    
+    public static void main(String[] args)
+    {
+        PolarGenerator g = new PolarGenerator();
+        for (int i = 0; i < 10; ++i)
+        {
+            System.out.println(g.kovetkezo());
+        }
+    }
+}
+]]>
+        </programlisting>
+         <screen>
+<![CDATA[
+kewo@kewo-X540SA:~/Downloads/wat/bhax/thematic_tutorials/bhax_textbook/programs/polar$ javac PolarGenerator.java 
+kewo@kewo-X540SA:~/Downloads/wat/bhax/thematic_tutorials/bhax_textbook/programs/polar$ java PolarGenerator 
+0.006674714555292872
+-0.24640144712551879
+-0.4069832854100173
+-0.024068693495627392
+-0.7589803679382394
+0.2576647115108179
+-2.2431803081014032
+1.714304362953668
+0.1266227991597374
+-0.9711695400609337
+
+ ]]>
+</screen>             
     </section>        
 
     <section>
@@ -36,6 +193,247 @@
         <para>
             Megoldás forrása:                
         </para>
+        <para>
+        	Az LZW algoritmus egy tömörítő eljárás. A bemeneti 1 és 0-ákból egy bináris fát épít. A fa felépítésekor mindig ellenőrzi van-e már 0-ás vagy 1-es gyermek. Ha nincs, akkor létrehoz egyet és visszaugrik a gyökérre. Ha van, akkor a 0-ás vagy 1-es gyermekre lép. Addig lépked lefele a fában, amíg nem talál egy olyan részfát, ahol létre kellene hozni egy új gyermeket. A létrehozás után visszaugrik a gyökérre.
+        </para>
+        <programlisting language="c">
+<![CDATA[ 
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <math.h>
+
+typedef struct binfa
+{
+  int ertek;
+  struct binfa *bal_nulla;
+  struct binfa *jobb_egy;
+                //>itt definiáljuk a binfa típust
+} BINFA, *BINFA_PTR;
+
+BINFA_PTR
+uj_elem ()
+{
+  BINFA_PTR p;
+
+  if ((p = (BINFA_PTR) malloc (sizeof (BINFA))) == NULL)
+    {
+      perror ("memoria");
+      exit (EXIT_FAILURE);
+    }
+  return p;
+}
+
+extern void kiir (BINFA_PTR elem);
+extern void ratlag (BINFA_PTR elem);
+extern void rszoras (BINFA_PTR elem);
+extern void szabadit (BINFA_PTR elem);
+
+int
+main (int argc, char **argv)
+{
+  char b;
+  int egy_e;
+  int i;
+  unsigned char c;
+                //>BinfaPTR== user által definiált típus
+  BINFA_PTR gyoker = uj_elem ();
+  gyoker->ertek = '/';
+  gyoker->bal_nulla = gyoker->jobb_egy = NULL;
+  BINFA_PTR fa = gyoker;
+  long max=0;
+while (read (0, (void *) &b, sizeof(unsigned char)))
+    {
+        for(i=0;i<8; ++i)
+        {
+            egy_e= b& 0x80;
+            if ((egy_e >>7)==0)
+                c='1';
+            else
+                c='0';
+        }
+//      write (1, &b, 1);
+      if (c == '0')
+	{
+	  if (fa->bal_nulla == NULL)
+	    {
+	      fa->bal_nulla = uj_elem ();
+	      fa->bal_nulla->ertek = 0;
+	      fa->bal_nulla->bal_nulla = fa->bal_nulla->jobb_egy = NULL;
+	      fa = gyoker;
+	    }
+	  else
+	    {
+	      fa = fa->bal_nulla;
+	    }
+	}
+      else
+	{
+	  if (fa->jobb_egy == NULL)
+	    {
+	      fa->jobb_egy = uj_elem ();
+	      fa->jobb_egy->ertek = 1;
+	      fa->jobb_egy->bal_nulla = fa->jobb_egy->jobb_egy = NULL;
+	      fa = gyoker;
+	    }
+	  else
+	    {
+	      fa = fa->jobb_egy;
+	    }
+	}
+    }
+
+  printf ("\n");
+  kiir (gyoker);
+
+  extern int max_melyseg, atlagosszeg, melyseg, atlagdb;
+  extern double szorasosszeg, atlag;
+
+  printf ("melyseg=%d\n", max_melyseg - 1);
+
+  /* Átlagos ághossz kiszámítása */
+  atlagosszeg = 0;
+  melyseg = 0;
+  atlagdb = 0;
+  ratlag (gyoker);
+  // atlag = atlagosszeg / atlagdb;
+  // (int) / (int) "elromlik", ezért casoljuk
+  // K&R tudatlansági védelem miatt a sok () :)
+  atlag = ((double) atlagosszeg) / atlagdb;
+
+  /* Ághosszak szórásának kiszámítása */
+  atlagosszeg = 0;
+  melyseg = 0;
+  atlagdb = 0;
+  szorasosszeg = 0.0;
+
+  rszoras (gyoker);
+
+  double szoras = 0.0;
+
+  if (atlagdb - 1 > 0)
+    szoras = sqrt (szorasosszeg / (atlagdb - 1));
+  else
+    szoras = sqrt (szorasosszeg);
+
+  printf ("altag=%f\nszoras=%f\n", atlag, szoras);
+
+  szabadit (gyoker);
+}
+
+
+ // a Javacska ONE projekt Hetedik Szem/TudatSzamitas.java mintajara
+ // http://sourceforge.net/projects/javacska/
+ // az atlag() hivasakor is inicializalni kell oket, a
+ // a rekurziv bejaras hasznalja
+int atlagosszeg = 0, melyseg = 0, atlagdb = 0;
+
+void
+ratlag (BINFA_PTR fa)
+{
+
+  if (fa != NULL)
+    {
+      ++melyseg;
+      ratlag (fa->jobb_egy);
+      ratlag (fa->bal_nulla);
+      --melyseg;
+
+      if (fa->jobb_egy == NULL && fa->bal_nulla == NULL)
+	{
+
+	  ++atlagdb;
+	  atlagosszeg += melyseg;
+
+	}
+
+    }
+
+}
+
+ // a Javacska ONE projekt Hetedik Szem/TudatSzamitas.java mintajara
+ // http://sourceforge.net/projects/javacska/
+ // az atlag() hivasakor is inicializalni kell oket, a
+ // a rekurziv bejaras hasznalja
+double szorasosszeg = 0.0, atlag = 0.0;
+
+void
+rszoras (BINFA_PTR fa)
+{
+
+  if (fa != NULL)
+    {
+      ++melyseg;
+      rszoras (fa->jobb_egy);
+      rszoras (fa->bal_nulla);
+      --melyseg;
+
+      if (fa->jobb_egy == NULL && fa->bal_nulla == NULL)
+	{
+
+	  ++atlagdb;
+	  szorasosszeg += ((melyseg - atlag) * (melyseg - atlag));
+
+	}
+
+    }
+
+}
+
+//static int melyseg = 0;
+int max_melyseg = 0;
+
+void
+kiir (BINFA_PTR elem)
+{
+  if (elem != NULL)
+    {
+      ++melyseg;
+      _melyseif (melyseg > maxg);
+	max_melyseg = melyseg;
+      kiir (elem->jobb_egy);
+      // ez a postorder bejáráshoz képest
+      // 1-el nagyobb mélység, ezért -1
+      for (int i = 0; i < melyseg; ++i)
+	printf ("---");
+      printf ("%c(%d)\n", elem->ertek < 2 ? '0' + elem->ertek : elem->ertek,
+	      melyseg - 1);
+      kiir (elem->bal_nulla);
+      --melyseg;
+    }
+}
+
+void
+szabadit (BINFA_PTR elem)
+{
+  if (elem != NULL)
+    {
+      szabadit (elem->jobb_egy);
+      szabadit (elem->bal_nulla);
+      free (elem);
+    }
+}
+]]>
+</programlisting> 
+<screen>
+<![CDATA[
+kewo@kewo-X540SA:~/Downloads/wat/bhax/thematic_tutorials/bhax_textbook/programs/lzw$ gcc z.c -lm -o z
+kewo@kewo-X540SA:~/Downloads/wat/bhax/thematic_tutorials/bhax_textbook/programs/lzw$ ./z <wat.txt 
+
+------1(1)
+------------1(3)
+---------0(2)
+---/(0)
+------------1(3)
+---------1(2)
+------------0(3)
+------0(1)
+melyseg=3
+altag=3.000000
+szoras=0.000000
+
+ ]]>
+</screen> 
     </section>        
         
     <section>
@@ -48,7 +446,65 @@
         </para>
         <para>
             Megoldás forrása:                
-        </para>
+        </para>       
+    <para>Elsőként megnézzük, hogy a bejárandó fa nem üres.Ha nem üres, akkor inorder-el végigmegyünk a gyökérelem jobb oldali részfáján, feldolgozzuk a gyökérelemet . Végül végigmegyünk a bal oldali részfán.</para> 
+<screen>
+<![CDATA[
+kewo@kewo-X540SA:~/Downloads/wat/bhax/thematic_tutorials/bhax_textbook/programs/lzw$ gcc z.c -lm -o z
+kewo@kewo-X540SA:~/Downloads/wat/bhax/thematic_tutorials/bhax_textbook/programs/lzw$ ./z <wat.txt 
+
+------1(1)
+------------1(3)
+---------0(2)
+---/(0)
+------------1(3)
+---------1(2)
+------------0(3)
+------0(1)
+melyseg=3
+altag=3.000000
+szoras=0.000000
+
+ ]]>
+</screen> 
+    <para>Preorder-nél először dolgozzuk fel a gyökérelemet, majd bejárjuk a gyökérelem bal oldali részfáját és utána a jobb oldali részfáját.</para> 
+<screen>
+<![CDATA[
+kewo@kewo-X540SA:~/Downloads/wat/bhax/thematic_tutorials/bhax_textbook/programs/lzw$ ./z_pre <wat.txt 
+
+---/(0)
+------0(1)
+---------1(2)
+------------0(3)
+------------1(3)
+------1(1)
+---------0(2)
+------------1(3)
+melyseg=3
+altag=3.000000
+szoras=0.000000
+ ]]>
+        </screen>
+      <para>A postorder bejárás a preorder ellentetje. Először a gyökérelem bal oldali részfáját járjuk be, ezután a jobb oldalit és végül a gyökérelemet dolgozzuk fel.
+      </para> 
+<screen>
+<![CDATA[
+kewo@kewo-X540SA:~/Downloads/wat/bhax/thematic_tutorials/bhax_textbook/programs/lzw$ ./z_post <wat.txt 
+
+------------1(3)
+---------0(2)
+------1(1)
+------------1(3)
+------------0(3)
+---------1(2)
+------0(1)
+---/(0)
+melyseg=3
+altag=3.000000
+szoras=0.000000
+
+ ]]>
+</screen>
     </section>        
                         
     <section>
@@ -63,6 +519,170 @@
         <para>
             Megoldás forrása:                
         </para>
+        <para>
+  A fa gyökere egy objektum, a fa pedig a mutató. Ez a mutató mindig az épülő fa aktuális csomópontjára mutat. 
+  Az konstruktorral ráállítjuk a fa mutatót a gyökérre. Ha a bemenő karakter 0, akkor megnézzük, hogy az aktuális csomópontnak van-e 0-ás gyermeke. Ha van , akkor a fa mutatót ráállítjuk. Ha nincs, akkor egy új nullás csomópontot hozunk létre. Ezután az aktuális csomópont nullás gyermekét ráállítjuk az új csomópontra és visszaállunk a gyökérre. Ugyanez megy végbe 1-es karakter bevitele esetén is. A dekonstruktorban felszabadítjuk a gyoker gyerekeit. 
+		</para>
+        <programlisting language="c++">
+    <![CDATA[ 
+class LZWBinFa
+{
+public:
+   LZWBinFa ():fa (&gyoker)
+    {
+    }
+    ~LZWBinFa ()
+    {
+        szabadit (gyoker.egyesGyermek ());
+        szabadit (gyoker.nullasGyermek ());
+    }
+    void operator<< (char b) 
+    {
+        
+        if (b == '0')
+        {
+          
+            if (!fa->nullasGyermek ())
+            {
+                
+                Csomopont *uj = new Csomopont ('0');
+                fa->ujNullasGyermek (uj);
+                fa = &gyoker;
+            }
+            else			
+            {
+                
+                fa = fa->nullasGyermek ();
+            }
+        }
+       
+        else
+        {
+            if (!fa->egyesGyermek ())
+            {
+                Csomopont *uj = new Csomopont ('1');
+                fa->ujEgyesGyermek (uj);
+                fa = &gyoker;
+            }
+            else
+            {
+                fa = fa->egyesGyermek ();
+            }
+        }
+    }
+]]> 
+</programlisting>   
+<para>
+    A Csomopont osztály privát, tehát csak az LZWBinFa osztályon belül tudjuk elérni.
+    A konstruktor az alapértelmezett '/'-el hozz létre egy csomópontot. A két gyerkmekre mutató mutatót lenullázzuk. 
+    Az ezt követő függvények visszaadják az aktuális csomópont jobb és bal gyermekét. Ezután a metódusok az aktuális 
+    csomópont akutális gyerekeit ráállítják az új csomópontokra. Végül létrehozzuk a privát változókat, mutatókat és a másoló konstruktort.
+</para>
+<programlisting language="c++">
+    <![CDATA[ 
+private:
+ class Csomopont
+    {
+    public:
+        Csomopont (char b = '/'):betu (b), balNulla (0), jobbEgy (0)
+        {
+        };
+        ~Csomopont ()
+        {
+        };
+        
+        Csomopont *nullasGyermek () const
+        {
+            return balNulla;
+        }
+        
+        Csomopont *egyesGyermek () const
+        {
+            return jobbEgy;
+        }
+        
+        void ujNullasGyermek (Csomopont * gy)
+        {
+            balNulla = gy;
+        }
+        
+        void ujEgyesGyermek (Csomopont * gy)
+        {
+            jobbEgy = gy;
+        }
+       
+        char getBetu () const
+        {
+            return betu;
+        }
+    private:
+        char betu;
+        
+        Csomopont *balNulla;
+        Csomopont *jobbEgy;
+        Csomopont (const Csomopont &); //másoló konstruktor
+        Csomopont & operator= (const Csomopont &);
+    };
+]]> 
+</programlisting>   
+<para>Létrehozzuk a binFa objektumot. A b változóba beolvassuk a bejövő fájl bájtjait. Egy for ciklussal megnézzük a b-ben lévő bájt bitjeit és ezek alapján építjük fel a fánkat. Végül egy fájlba kiirjuk a fát, magasságát, szórását és az átlagot.
+</para> 
+<programlisting language="c++">
+    <![CDATA[ 
+int
+main (int argc, char *argv[])
+{
+    
+    if (argc != 4)
+    {    
+        usage ();
+        return -1;
+    }
+    char *inFile = *++argv;
+    if (*((*++argv) + 1) != 'o')
+    {
+        usage ();
+        return -2;
+    }
+    std::fstream beFile (inFile, std::ios_base::in);
+    if (!beFile)
+    {
+        std::cout << inFile << " nem letezik..." << std::endl;
+        usage ();
+        return -3;
+    }
+    std::fstream kiFile (*++argv, std::ios_base::out);
+    unsigned char b;		
+    LZWBinFa binFa;		
+    while (beFile.read ((char *) &b, sizeof (unsigned char)))
+    {
+        for (int i = 0; i < 8; ++i)
+        {    
+            if (b & 0x80)
+                binFa << '1';
+            else
+                binFa << '0';
+            b <<= 1;
+        }
+    }
+    kiFile << binFa;
+    kiFile << "depth = " << binFa.getMelyseg () << std::endl;
+    kiFile << "mean = " << binFa.getAtlag () << std::endl;
+    kiFile << "var = " << binFa.getSzoras () << std::endl;
+    kiFile.close ();
+    beFile.close ();
+    return 0;
+}
+]]> 
+</programlisting>
+
+        <screen>
+<![CDATA[
+kewo@kewo-X540SA:~/Downloads/wat/bhax/thematic_tutorials/bhax_textbook/programs/lzw$ g++ z3a7.cpp -o z3a7
+kewo@kewo-X540SA:~/Downloads/wat/bhax/thematic_tutorials/bhax_textbook/programs/lzw$ ./z3a7 wat.txt -o watta.txt
+ ]]>
+</screen>
+
     </section>        
                 
     <section>
@@ -77,6 +697,35 @@
         <para>
             Megoldás forrása:  
         </para>
+        <para>
+  Elsőként átírjuk a gyoker-t mutatóra. Ezután a konstruktorban a gyoker mutatónkat és a fa mutatót is ráállítjuk egy most lefoglalt területre. A destruktort is változtatjuk, hogy ezt a lefoglalt területet később felszabadítsuk. Mivel a gyoker mostmár mutató, ezért a gyoker álltal mutatott csomópont 0 és 1 es gyermekére kell meghívnunk a szabadit függvényt. Ezek után ahol a fordítás során hibát kapunk ki kell törölnünk az <![CDATA[&]]> operátort és már készen is vagyunk. 
+</para>
+<programlisting language="c++">
+    <![CDATA[ 
+protected:			
+    Csomopont *gyoker;
+};
+]]> 
+</programlisting> 
+<programlisting language="c++">
+    <![CDATA[ 
+public:
+    
+   LZWBinFa ()
+    {
+		gyoker = new Csomopont('/');
+		fa = gyoker;
+    }
+    ~LZWBinFa ()
+    {
+		
+        szabadit (gyoker->egyesGyermek ());
+        szabadit (gyoker->nullasGyermek ());
+        delete gyoker;
+    }
+]]> 
+</programlisting> 
+
     </section>                     
 
     <section>
@@ -91,6 +740,38 @@
         <para>
             Megoldás forrása:  
         </para>
+        <programlisting language="c++"><![CDATA[
+    LZWBinFa (LZWBinFa&& forras)
+    {
+        std::cout<<"Move ctor\n";
+        gyoker = nullptr;
+        *this = std::move(forras); //ezzel kényszerítjük ki, hogy a mozgató értékadást használja
+        
+    }
+    LZWBinFa& operator= (LZWBinFa&& forras)
+    {
+        std::cout<<"Move assignment ctor\n";
+        std::swap(gyoker, forras.gyoker);
+        return *this;
+    }]]>
+            </programlisting>
+
+        <para>
+            A mozgató konstruktorban meghívjuk a mozgató értékadást. A fát átmásoljuk és az eredetit kinullázzuk.
+            Ahova az erdeti fánkat akarjuk mozgatni, a gyökér mutatóját kinullázzuk. Ezután meghívjuk a mozgató értékadást úgy, hogy az argumentumként 
+            átadott fát egyenlővé tesszük a cél fával. A mozgató értékadásban pedig megcseréljük a cél fa gyökerének és a forrás fa gyökerének az értékét. Mivel a forrásunk gyökerét kinulláztuk és meg szeretnénk hívni a szabadit függvényt annak a gyökérnek az 1 és 0-ás gyermekére, ami nem mutat semmire, ezért módosítanunk kell a konstruktort, hogy ezek az utasítások csak akkor menjenek végbe, ha a gyökér mutató nincs kinullázva.
+        </para>
+        <programlisting language="c++"><![CDATA[
+    ~LZWBinFa ()
+    {
+        if (gyoker != nullptr)
+        {
+            szabadit (gyoker->egyesGyermek ());
+            szabadit (gyoker->nullasGyermek ());
+            delete(gyoker);
+        }
+    }]]>
+            </programlisting>
     </section>                     
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
 </chapter>                

@@ -20,7 +20,7 @@
         	<title>Turing gép</title>
                     <mediaobject>
                         <imageobject>
-                            <imagedata fileref="programs/unary.png" format="PNG" scale="50"/>
+                            <imagedata fileref="img/unary.png" format="PNG" scale="50"/>
                         </imageobject>
                     </mediaobject>
             </figure>

@@ -26,8 +26,10 @@
             </otheraddr>
         </address>
     </author>  
+    
     <author>
         <personname>
+        	<honorific></honorific>
             <surname>Koós</surname>
             <firstname>Zoltán</firstname>        
         </personname>    
@@ -35,7 +37,7 @@
             <shortaffil>E. Hallg.</shortaffil>
             <jobtitle>Egyetemi hallgató</jobtitle>
             <orgname>Debreceni Egyetem</orgname>
-            <orgdiv>Informatikai Kar</orgdiv>
+            <orgdiv>Információtechnológiai Tanszék</orgdiv>
             <address>
                 <email>koos.zoltan.iso@gmail.com</email>                
             </address>

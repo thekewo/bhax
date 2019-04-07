@@ -190,9 +190,9 @@ false]]></screen>
             függvényt, azaz a T100 program nem is létezik.                
         </para>
         <para>
-            Mondjuk azt, hogy létezik olyan program 'A', ami el tudja dönteni egy másik programról, hogy van-e benne végtelen ciklus.
-            Ha van, akkor megáll a program. Ellenkező esetben pedig végtelen ciklusba kezd. Létrehozunk egy új programot 'B' az előzőt 
-            felhasználva és ha A megállt, akkor végtelen ciklusba kezd, ha pedig az A kezdett végtelen ciklusba, akkor megáll.
+            Mondjuk azt, hogy létezik olyan program T100, ami el tudja dönteni egy másik programról, hogy van-e benne végtelen ciklus.
+            Ha van, akkor megáll a program. Ellenkező esetben pedig végtelen ciklusba kezd. Létrehozunk egy új programot T1000 az előzőt 
+            felhasználva és ha T100 megállt, akkor végtelen ciklusba kezd, ha pedig az T100 kezdett végtelen ciklusba, akkor megáll.
             Mi lesz a végeredénye annak, ha önmagára hívjuk meg ezt a programot?
             Csak akkor áll le a program, ha a második argumentumként kapott saját programunk megáll. Ez viszont ellentmondáshoz vezet.
             Ezért nem lehetséges ilyen programot írni.
