@@ -18,8 +18,40 @@
             Megoldás forrása: <link xlink:href=""></link>               
         </para>
         <para>
-            Tanulságok, tapasztalatok, magyarázat...
-        </para>            
+        	q - kilépés
+        	p - szüneteltetés
+            Fordítás:
+        </para> 
+        <screen><![CDATA[
+kewo@kewo-X540SA:~/Downloads/wat/bhax/attention_raising/Myrmecologist$ /home/kewo/Qt/5.12.0/gcc_64/bin/qmake myrmecologist.pro
+Info: creating stash file /home/kewo/Downloads/wat/bhax/attention_raising/Myrmecologist/.qmake.stash
+kewo@kewo-X540SA:~/Downloads/wat/bhax/attention_raising/Myrmecologist$ make
+g++ -c -pipe -O2 -std=gnu++11 -Wall -W -D_REENTRANT -fPIC -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -I. -I. -I/home/kewo/Qt/5.12.0/gcc_64/include -I/home/kewo/Qt/5.12.0/gcc_64/include/QtWidgets -I/home/kewo/Qt/5.12.0/gcc_64/include/QtGui -I/home/kewo/Qt/5.12.0/gcc_64/include/QtCore -I. -isystem /usr/include/libdrm -I/home/kewo/Qt/5.12.0/gcc_64/mkspecs/linux-g++ -o main.o main.cpp
+g++ -c -pipe -O2 -std=gnu++11 -Wall -W -D_REENTRANT -fPIC -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -I. -I. -I/home/kewo/Qt/5.12.0/gcc_64/include -I/home/kewo/Qt/5.12.0/gcc_64/include/QtWidgets -I/home/kewo/Qt/5.12.0/gcc_64/include/QtGui -I/home/kewo/Qt/5.12.0/gcc_64/include/QtCore -I. -isystem /usr/include/libdrm -I/home/kewo/Qt/5.12.0/gcc_64/mkspecs/linux-g++ -o antwin.o antwin.cpp
+g++ -c -pipe -O2 -std=gnu++11 -Wall -W -D_REENTRANT -fPIC -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -I. -I. -I/home/kewo/Qt/5.12.0/gcc_64/include -I/home/kewo/Qt/5.12.0/gcc_64/include/QtWidgets -I/home/kewo/Qt/5.12.0/gcc_64/include/QtGui -I/home/kewo/Qt/5.12.0/gcc_64/include/QtCore -I. -isystem /usr/include/libdrm -I/home/kewo/Qt/5.12.0/gcc_64/mkspecs/linux-g++ -o antthread.o antthread.cpp
+g++ -pipe -O2 -std=gnu++11 -Wall -W -dM -E -o moc_predefs.h /home/kewo/Qt/5.12.0/gcc_64/mkspecs/features/data/dummy.cpp
+/home/kewo/Qt/5.12.0/gcc_64/bin/moc -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB --include /home/kewo/Downloads/wat/bhax/attention_raising/Myrmecologist/moc_predefs.h -I/home/kewo/Qt/5.12.0/gcc_64/mkspecs/linux-g++ -I/home/kewo/Downloads/wat/bhax/attention_raising/Myrmecologist -I/home/kewo/Downloads/wat/bhax/attention_raising/Myrmecologist -I/home/kewo/Qt/5.12.0/gcc_64/include -I/home/kewo/Qt/5.12.0/gcc_64/include/QtWidgets -I/home/kewo/Qt/5.12.0/gcc_64/include/QtGui -I/home/kewo/Qt/5.12.0/gcc_64/include/QtCore -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include antwin.h -o moc_antwin.cpp
+g++ -c -pipe -O2 -std=gnu++11 -Wall -W -D_REENTRANT -fPIC -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -I. -I. -I/home/kewo/Qt/5.12.0/gcc_64/include -I/home/kewo/Qt/5.12.0/gcc_64/include/QtWidgets -I/home/kewo/Qt/5.12.0/gcc_64/include/QtGui -I/home/kewo/Qt/5.12.0/gcc_64/include/QtCore -I. -isystem /usr/include/libdrm -I/home/kewo/Qt/5.12.0/gcc_64/mkspecs/linux-g++ -o moc_antwin.o moc_antwin.cpp
+/home/kewo/Qt/5.12.0/gcc_64/bin/moc -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB --include /home/kewo/Downloads/wat/bhax/attention_raising/Myrmecologist/moc_predefs.h -I/home/kewo/Qt/5.12.0/gcc_64/mkspecs/linux-g++ -I/home/kewo/Downloads/wat/bhax/attention_raising/Myrmecologist -I/home/kewo/Downloads/wat/bhax/attention_raising/Myrmecologist -I/home/kewo/Qt/5.12.0/gcc_64/include -I/home/kewo/Qt/5.12.0/gcc_64/include/QtWidgets -I/home/kewo/Qt/5.12.0/gcc_64/include/QtGui -I/home/kewo/Qt/5.12.0/gcc_64/include/QtCore -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include antthread.h -o moc_antthread.cpp
+g++ -c -pipe -O2 -std=gnu++11 -Wall -W -D_REENTRANT -fPIC -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -I. -I. -I/home/kewo/Qt/5.12.0/gcc_64/include -I/home/kewo/Qt/5.12.0/gcc_64/include/QtWidgets -I/home/kewo/Qt/5.12.0/gcc_64/include/QtGui -I/home/kewo/Qt/5.12.0/gcc_64/include/QtCore -I. -isystem /usr/include/libdrm -I/home/kewo/Qt/5.12.0/gcc_64/mkspecs/linux-g++ -o moc_antthread.o moc_antthread.cpp
+g++ -Wl,-O1 -Wl,-rpath,/home/kewo/Qt/5.12.0/gcc_64/lib -o myrmecologist main.o antwin.o antthread.o moc_antwin.o moc_antthread.o   -L/home/kewo/Qt/5.12.0/gcc_64/lib -lQt5Widgets -lQt5Gui -lQt5Core -lGL -lpthread 
+kewo@kewo-X540SA:~/Downloads/wat/bhax/attention_raising/Myrmecologist$ ./myrmecologist -w 250 -m 150 -n 400 -t 10 -p 5 -f 80 -d 0 -a 255 -i 3 -s 3  -c 22
+    ]]>	
+    </screen>    
+    <mediaobject>
+    <imageobject>
+            <imagedata fileref="img/qthangya.png" scale="40" />
+            </imageobject>
+	</mediaobject>  
+	
+	<para>
+            
+    </para>  
+	<mediaobject>
+    <imageobject>
+            <imagedata fileref="img/uml.png" scale="30" />
+            </imageobject>
+	</mediaobject>     
     </section>        
     <section>
         <title>Java életjáték</title>
@@ -33,9 +65,141 @@
         <para>
             Megoldás forrása: <link xlink:href=""></link>               
         </para>
+        <programlisting language="java"><![CDATA[
+        
+public void időFejlődés() {
+        
+        boolean [][] rácsElőtte = rácsok[rácsIndex];
+        boolean [][] rácsUtána = rácsok[(rácsIndex+1)%2];
+        
+        for(int i=0; i<rácsElőtte.length; ++i) { // sorok
+            for(int j=0; j<rácsElőtte[0].length; ++j) { // oszlopok
+                
+                int élők = szomszédokSzáma(rácsElőtte, i, j, ÉLŐ);
+                
+                if(rácsElőtte[i][j] == ÉLŐ) {
+                /* Élő élő marad, ha kettő vagy három élő
+                 szomszedja van, különben halott lesz. */
+                    if(élők==2 || élők==3)
+                        rácsUtána[i][j] = ÉLŐ;
+                    else
+                        rácsUtána[i][j] = HALOTT;
+                }  else {
+                /* Halott halott marad, ha három élő
+                 szomszedja van, különben élő lesz. */
+                    if(élők==3)
+                        rácsUtána[i][j] = ÉLŐ;
+                    else
+                        rácsUtána[i][j] = HALOTT;
+                }
+            }
+        }
+        rácsIndex = (rácsIndex+1)%2;
+    }
+}]]></programlisting>
+
+
+
+    
+                <programlisting language="java"><![CDATA[
+public void sikló(boolean [][] rács, int x, int y) {
+        
+        rács[y+ 0][x+ 2] = ÉLŐ;
+        rács[y+ 1][x+ 1] = ÉLŐ;
+        rács[y+ 2][x+ 1] = ÉLŐ;
+        rács[y+ 2][x+ 2] = ÉLŐ;
+        rács[y+ 2][x+ 3] = ÉLŐ;
+        
+    }]]></programlisting>
+    
+    <programlisting language="java"><![CDATA[
+        
+public void siklóKilövő(boolean [][] rács, int x, int y) {
+        
+        rács[y+ 6][x+ 0] = ÉLŐ;
+        rács[y+ 6][x+ 1] = ÉLŐ;
+        rács[y+ 7][x+ 0] = ÉLŐ;
+        rács[y+ 7][x+ 1] = ÉLŐ;
+        
+        rács[y+ 3][x+ 13] = ÉLŐ;
+        
+        rács[y+ 4][x+ 12] = ÉLŐ;
+        rács[y+ 4][x+ 14] = ÉLŐ;
+        
+        rács[y+ 5][x+ 11] = ÉLŐ;
+        rács[y+ 5][x+ 15] = ÉLŐ;
+        rács[y+ 5][x+ 16] = ÉLŐ;
+        rács[y+ 5][x+ 25] = ÉLŐ;
+        
+        rács[y+ 6][x+ 11] = ÉLŐ;
+        rács[y+ 6][x+ 15] = ÉLŐ;
+        rács[y+ 6][x+ 16] = ÉLŐ;
+        rács[y+ 6][x+ 22] = ÉLŐ;
+        rács[y+ 6][x+ 23] = ÉLŐ;
+        rács[y+ 6][x+ 24] = ÉLŐ;
+        rács[y+ 6][x+ 25] = ÉLŐ;
+        
+        rács[y+ 7][x+ 11] = ÉLŐ;
+        rács[y+ 7][x+ 15] = ÉLŐ;
+        rács[y+ 7][x+ 16] = ÉLŐ;
+        rács[y+ 7][x+ 21] = ÉLŐ;
+        rács[y+ 7][x+ 22] = ÉLŐ;
+        rács[y+ 7][x+ 23] = ÉLŐ;
+        rács[y+ 7][x+ 24] = ÉLŐ;
+        
+        rács[y+ 8][x+ 12] = ÉLŐ;
+        rács[y+ 8][x+ 14] = ÉLŐ;
+        rács[y+ 8][x+ 21] = ÉLŐ;
+        rács[y+ 8][x+ 24] = ÉLŐ;
+        rács[y+ 8][x+ 34] = ÉLŐ;
+        rács[y+ 8][x+ 35] = ÉLŐ;
+        
+        rács[y+ 9][x+ 13] = ÉLŐ;
+        rács[y+ 9][x+ 21] = ÉLŐ;
+        rács[y+ 9][x+ 22] = ÉLŐ;
+        rács[y+ 9][x+ 23] = ÉLŐ;
+        rács[y+ 9][x+ 24] = ÉLŐ;
+        rács[y+ 9][x+ 34] = ÉLŐ;
+        rács[y+ 9][x+ 35] = ÉLŐ;
+        
+        rács[y+ 10][x+ 22] = ÉLŐ;
+        rács[y+ 10][x+ 23] = ÉLŐ;
+        rács[y+ 10][x+ 24] = ÉLŐ;
+        rács[y+ 10][x+ 25] = ÉLŐ;
+        
+        rács[y+ 11][x+ 25] = ÉLŐ;
+        
+    }]]>
+    	
+    </programlisting>
+        <programlisting language="java"><![CDATA[
+ public static void main(String[] args) {
+        new Sejtautomata(100, 75);
+    }
+}       
+        
+    }]]></programlisting>
         <para>
-            Tanulságok, tapasztalatok, magyarázat...
-        </para>            
+            Egy kétdimenziós tömb lesz az élettér, ami cellákból áll. Ezekben a cellákban helyezkednek el a sejtek, amik élnek vagy halottak. Két szabály van: -Élő élő marad, ha kettő vagy három élő szomszedja van, különben halott lesz. -Halott halott marad, ha három élő szomszedja van, különben élő lesz.
+        </para>   
+        <screen><![CDATA[
+kewo@kewo-X540SA:~/Downloads/wat/bhax/thematic_tutorials/bhax_textbook/programs/conway$ javac -encoding UTF-8 Sejtautomata.java 
+kewo@kewo-X540SA:~/Downloads/wat/bhax/thematic_tutorials/bhax_textbook/programs/conway$ java Sejtautomata 
+    ]]></screen>
+        <mediaobject>
+    		<imageobject>
+            <imagedata fileref="img/sejtautomata_java.png" scale="70" />
+            </imageobject>
+		</mediaobject> 
+		<para>
+            S - kép készítése a sejttér állapotáról
+            N - sejtek méretének növelése
+            K - sejtek méretének csökkentése
+            G - szimuláció gyorsítása
+            I - szimuláció lassítása
+            Jobb/Bal gomb lenyomása - sejt állapot negálása
+
+        </para>          
     </section>        
     <section>
         <title>Qt C++ életjáték</title>
@@ -48,9 +212,126 @@
         <para>
             Megoldás forrása: <link xlink:href=""></link>               
         </para>
-        <para>
-            Tanulságok, tapasztalatok, magyarázat...
-        </para>            
+        <programlisting language="c++"><![CDATA[
+void SejtSzal::idoFejlodes() {
+    bool **racsElotte = racsok[racsIndex];
+    bool **racsUtana = racsok[(racsIndex+1)%2];
+    for(int i=0; i<magassag; ++i) { // sorok
+        for(int j=0; j<szelesseg; ++j) { // oszlopok
+            int elok = szomszedokSzama(racsElotte, i, j, SejtAblak::ELO);
+            if(racsElotte[i][j] == SejtAblak::ELO) {
+                
+                if(elok==2 || elok==3)
+                    racsUtana[i][j] = SejtAblak::ELO;
+                else
+                    racsUtana[i][j] = SejtAblak::HALOTT;
+            }  else {
+               
+                if(elok==3)
+                    racsUtana[i][j] = SejtAblak::ELO;
+                else
+                    racsUtana[i][j] = SejtAblak::HALOTT;
+            }
+        }
+    }
+    racsIndex = (racsIndex+1)%2;
+}
+]]></programlisting> 
+  
+         <programlisting language="c++"><![CDATA[
+void SejtAblak::siklo(bool **racs, int x, int y) {
+  
+  racs[y+ 0][x+ 2] = ELO;
+  racs[y+ 1][x+ 1] = ELO;
+  racs[y+ 2][x+ 1] = ELO;
+  racs[y+ 2][x+ 2] = ELO;
+  racs[y+ 2][x+ 3] = ELO;
+  
+}
+]]></programlisting> 
+   
+      <programlisting language="c++"><![CDATA[
+void SejtAblak::sikloKilovo(bool **racs, int x, int y) {
+  
+  racs[y+ 6][x+ 0] = ELO;
+  racs[y+ 6][x+ 1] = ELO;
+  racs[y+ 7][x+ 0] = ELO;
+  racs[y+ 7][x+ 1] = ELO;
+  
+  racs[y+ 3][x+ 13] = ELO;
+  
+  racs[y+ 4][x+ 12] = ELO;
+  racs[y+ 4][x+ 14] = ELO;
+  
+  racs[y+ 5][x+ 11] = ELO;
+  racs[y+ 5][x+ 15] = ELO;
+  racs[y+ 5][x+ 16] = ELO;
+  racs[y+ 5][x+ 25] = ELO;
+  
+  racs[y+ 6][x+ 11] = ELO;
+  racs[y+ 6][x+ 15] = ELO;
+  racs[y+ 6][x+ 16] = ELO;
+  racs[y+ 6][x+ 22] = ELO;
+  racs[y+ 6][x+ 23] = ELO;
+  racs[y+ 6][x+ 24] = ELO;
+  racs[y+ 6][x+ 25] = ELO;
+  
+  racs[y+ 7][x+ 11] = ELO;
+  racs[y+ 7][x+ 15] = ELO;
+  racs[y+ 7][x+ 16] = ELO;
+  racs[y+ 7][x+ 21] = ELO;
+  racs[y+ 7][x+ 22] = ELO;
+  racs[y+ 7][x+ 23] = ELO;
+  racs[y+ 7][x+ 24] = ELO;
+  
+  racs[y+ 8][x+ 12] = ELO;
+  racs[y+ 8][x+ 14] = ELO;
+  racs[y+ 8][x+ 21] = ELO;
+  racs[y+ 8][x+ 24] = ELO;
+  racs[y+ 8][x+ 34] = ELO;
+  racs[y+ 8][x+ 35] = ELO;
+  
+  racs[y+ 9][x+ 13] = ELO;
+  racs[y+ 9][x+ 21] = ELO;
+  racs[y+ 9][x+ 22] = ELO;
+  racs[y+ 9][x+ 23] = ELO;
+  racs[y+ 9][x+ 24] = ELO;
+  racs[y+ 9][x+ 34] = ELO;
+  racs[y+ 9][x+ 35] = ELO;
+  
+  racs[y+ 10][x+ 22] = ELO;
+  racs[y+ 10][x+ 23] = ELO;
+  racs[y+ 10][x+ 24] = ELO;
+  racs[y+ 10][x+ 25] = ELO;
+  
+  racs[y+ 11][x+ 25] = ELO;
+  
+}
+]]></programlisting> 
+<programlisting language="c++"><![CDATA[
+#include <QApplication>
+#include "sejtablak.h"
+#include <QDesktopWidget>
+int main(int argc, char *argv[])
+{
+  QApplication a(argc, argv);
+  SejtAblak w(100, 75);
+  w.show();
+  
+  return a.exec();
+}
+]]></programlisting> 
+
+     <screen><![CDATA[
+kewo@kewo-X540SA:~/Downloads/wat/bhax/thematic_tutorials/bhax_textbook/programs/conway/sejtautomata_c++$ qmake sejtautomata_c++.pro
+kewo@kewo-X540SA:~/Downloads/wat/bhax/thematic_tutorials/bhax_textbook/programs/conway/sejtautomata_c++$ make
+kewo@kewo-X540SA:~/Downloads/wat/bhax/thematic_tutorials/bhax_textbook/programs/conway/sejtautomata_c++$ ./sejtautomata_c++ 
+    ]]></screen>
+     <mediaobject>
+    <imageobject>
+            <imagedata fileref="img/sejtautomata_cpp.png" scale="70" />
+            </imageobject>
+	</mediaobject>           
     </section>        
     <section>
         <title>BrainB Benchmark</title>
@@ -63,8 +344,18 @@
             Megoldás forrása: <link xlink:href=""></link>               
         </para>
         <para>
-            Tanulságok, tapasztalatok, magyarázat...
-        </para>            
+            A program célja az esportolók tesztelése, mennyire tudják követni a karakter mozgását. 
+		</para> 
+		 <mediaobject>
+    <imageobject>
+            <imagedata fileref="img/brainb.png" scale="40" />
+            </imageobject>
+     </mediaobject>
+      <mediaobject>
+    <imageobject>
+            <imagedata fileref="img/brainb2.png" scale="20" />
+            </imageobject>
+</mediaobject>            
     </section>        
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
 </chapter>                
