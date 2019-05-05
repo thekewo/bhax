@@ -256,7 +256,7 @@ mandel.png mentve
             Megoldás videó: <link xlink:href="https://youtu.be/gvaqijHlRUs">https://youtu.be/gvaqijHlRUs</link>
         </para>
         <para>
-            Megoldás forrása:                
+            Megoldás forrása:  <link xlink:href ="https://github.com/thekewo/bhax/tree/master/thematic_tutorials/bhax_textbook/programs">https://github.com/thekewo/bhax/tree/master/thematic_tutorials/bhax_textbook/programs</link>              
         </para>
         <para>        
 A <link xlink:href="#bhax-textbook-feladatok-mandelbrot.Mandelbrot">Mandelbrot halmaz</link> pontban vázolt
@@ -824,7 +824,7 @@ main (int argc, char *argv[])
             Megoldás videó: <link xlink:href=""></link>
             Illetve <link xlink:href="https://bhaxor.blog.hu/2018/09/02/ismerkedes_a_mandelbrot_halmazzal">https://bhaxor.blog.hu/2018/09/02/ismerkedes_a_mandelbrot_halmazzal</link>.        </para>
         <para>
-            Megoldás forrása: <link xlink:href=""></link>
+            Megoldás forrása: <link xlink:href ="https://github.com/thekewo/bhax/tree/master/thematic_tutorials/bhax_textbook/programs">https://github.com/thekewo/bhax/tree/master/thematic_tutorials/bhax_textbook/programs</link>
         </para>
         <para>
         	A programunk elkészítéséhez a QT GUI-t fogjuk használni. Ez az egyik legtöbbet használt grafikus interfész. A qmake -project parancs létrehoz nekünk egy .pro kiterjesztésü fájlt. Ebbe a pro fájlba bele kell írjuk, hogy QT += widgets. Így mostmár használhatjuk a qtwidget-eket. A qmake *.pro parancs létrehoz egy Makefile-t, így ha kiadjuk a make parancsot létrejön egy futtatható fájl. Élesítés az n billentyűvel lehetséges.

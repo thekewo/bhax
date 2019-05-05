@@ -15,7 +15,7 @@
             Megoldás videó:
         </para>
         <para>
-            Megoldás forrása:                
+            Megoldás forrása:  <link xlink:href ="https://github.com/thekewo/bhax/tree/master/thematic_tutorials/bhax_textbook/programs">https://github.com/thekewo/bhax/tree/master/thematic_tutorials/bhax_textbook/programs</link>         
         </para>
         <para>
             A loop_1core.c program futtatása 100 százalékban kihasznál egy magot.
@@ -210,10 +210,13 @@ false]]></screen>
             Megoldás videó: <link xlink:href="https://bhaxor.blog.hu/2018/08/28/10_begin_goto_20_avagy_elindulunk">https://bhaxor.blog.hu/2018/08/28/10_begin_goto_20_avagy_elindulunk</link>
         </para>
         <para>
-            Megoldás forrása:  
+            Megoldás forrása: <link xlink:href ="https://github.com/thekewo/bhax/tree/master/thematic_tutorials/bhax_textbook/programs">https://github.com/thekewo/bhax/tree/master/thematic_tutorials/bhax_textbook/programs</link> 
         </para>
         <para>
             Ezzel a programmal két változó értékét a különbségük kihasználásával segédváltozó nélkül cseréljük meg.
+            Először is a firstNumber-t egenylővé tesszük a firstNumber és a secondNumber különbségével.
+            Ezután a secondNumber-t tesszük egyenlővé a már megváltoztatott firstNubmer és a secondNumber összegével.
+            Végül a firstNumber tesszük egyenlővé az új secondNumber és firstNumber különbségével.
         </para>
         
          <programlisting language="c">
@@ -237,6 +240,8 @@ int main()
    ]]>
 </programlisting>
 
+        
+
     </section>                     
 
     <section>
@@ -250,7 +255,7 @@ int main()
             Megoldás videó: <link xlink:href="https://bhaxor.blog.hu/2018/08/28/labdapattogas">https://bhaxor.blog.hu/2018/08/28/labdapattogas</link>
         </para>
         <para>
-            Megoldás forrása:  
+            Megoldás forrása: <link xlink:href ="https://github.com/thekewo/bhax/tree/master/thematic_tutorials/bhax_textbook/programs">https://github.com/thekewo/bhax/tree/master/thematic_tutorials/bhax_textbook/programs</link> 
         </para>
         <para>
             A getmaxyx függvénnyel meghatározzuk a terminál ablakunk méretét. Ezután kiíratjuk a labdát a kezdőpozícióra, majd addig növeljük a pozícióértéketket amíg el nem érjük az ablak széleit, tetejét vagy alját. Ekkor negáljuk azt az értéket amelyet hozzáadunk a hozzárendelt pozícióértékkel. Ez persze mind egy végtelen ciklusban van, tehát a folyamatosan fut a programunk. 
@@ -400,7 +405,7 @@ int main(void)
             Megoldás videó: <link xlink:href=""></link>
         </para>
         <para>
-            Megoldás forrása: <link xlink:href=""></link>
+            Megoldás forrása: <link xlink:href ="https://github.com/thekewo/bhax/tree/master/thematic_tutorials/bhax_textbook/programs">https://github.com/thekewo/bhax/tree/master/thematic_tutorials/bhax_textbook/programs</link>
         </para>
                     <programlisting language="c">
    <![CDATA[
@@ -435,6 +440,17 @@ kewo@kewo-X540SA:~/Desktop/programs$ ./word
 A word 32 bites
             ]]>
 </screen>
+<para>
+            A BogoMIPS egy Cpu tesztelő program, melyet Linus Torvalds írt, és a linux kernel része mind a mai napig. A program méri, hogy
+            mennyi idő alatt fut le, ezzel megmondva, hogy a CPU-d milyen gyors. Ennek a while fejléce ugyan azt a megoldást hasznája, amit mi a szóhossz számítsásához használtunk. 
+        </para>
+            <programlisting language="c"><![CDATA[
+                while (loops_per_sec <<= 1)
+                {
+                    ;
+                }
+                ]]>
+            </programlisting>
         
     </section>                     
 
@@ -448,7 +464,7 @@ A word 32 bites
             Megoldás videó: <link xlink:href=""></link>
         </para>
         <para>
-            Megoldás forrása: <link xlink:href=""></link>
+            Megoldás forrása: <link xlink:href ="https://github.com/thekewo/bhax/tree/master/thematic_tutorials/bhax_textbook/programs">https://github.com/thekewo/bhax/tree/master/thematic_tutorials/bhax_textbook/programs</link>
         </para>
         <para>
             Kezdéskor minden oldalnak van egy szavazati pontja és ha az egyik linkeli a másikat, akkor a linkelt oldal megkapja a linkelő pontját. Kereséskor annál előrébb lesz egy oldal, minél több oldal linkel rá és az is számít, hogy a rá linkelő oldalakra mennyi másik oldal linkel.

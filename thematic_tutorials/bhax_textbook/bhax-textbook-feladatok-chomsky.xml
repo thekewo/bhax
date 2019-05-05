@@ -100,7 +100,7 @@ A kezdő szimbólum az S.
             Megoldás videó: 
         </para>
         <para>
-            Megoldás forrása:  
+            Megoldás forrása:  <link xlink:href ="https://github.com/thekewo/bhax/tree/master/thematic_tutorials/bhax_textbook/programs">https://github.com/thekewo/bhax/tree/master/thematic_tutorials/bhax_textbook/programs</link>
         </para>
         <screen>
         <![CDATA[
@@ -164,7 +164,7 @@ kewo@kewo-X540SA:~/Downloads/wat/bhax/programs$
             Megoldás videó: 
         </para>
         <para>
-            Megoldás forrása:  
+            Megoldás forrása:  <link xlink:href ="https://github.com/thekewo/bhax/tree/master/thematic_tutorials/bhax_textbook/programs">https://github.com/thekewo/bhax/tree/master/thematic_tutorials/bhax_textbook/programs</link>
         </para>
         <para>
         	Ezt a programot lexer segítségével fogjuk megoldani. A lexer egy általunk megadott minta alapján fogja legenerálni a lexikális elemzőnket.
@@ -229,7 +229,7 @@ The number of real numbers is 4
             Megoldás videó: 
         </para>
         <para>
-            Megoldás forrása:  
+            Megoldás forrása: <link xlink:href ="https://github.com/thekewo/bhax/tree/master/thematic_tutorials/bhax_textbook/programs">https://github.com/thekewo/bhax/tree/master/thematic_tutorials/bhax_textbook/programs</link> 
         </para>
         <para>
             Az előző feladathoz hasonlóan a lexer egy általunk megadott minta alapján jogja létrehozni a lexikális elemzőnket.

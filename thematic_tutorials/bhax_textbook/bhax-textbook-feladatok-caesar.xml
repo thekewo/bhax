@@ -120,7 +120,7 @@ main ()
             Megoldás videó:
         </para>
         <para>
-            Megoldás forrása:                
+            Megoldás forrása:  <link xlink:href ="https://github.com/thekewo/bhax/tree/master/thematic_tutorials/bhax_textbook/programs">https://github.com/thekewo/bhax/tree/master/thematic_tutorials/bhax_textbook/programs</link>              
         </para>
            <programlisting><![CDATA[
 #include <stdio.h>
@@ -302,7 +302,7 @@ public class ExorTitkosító {
             Megoldás videó:
         </para>
         <para>
-            Megoldás forrása:                
+            Megoldás forrása:  <link xlink:href ="https://github.com/thekewo/bhax/tree/master/thematic_tutorials/bhax_textbook/programs">https://github.com/thekewo/bhax/tree/master/thematic_tutorials/bhax_textbook/programs</link>              
         </para>
         <programlisting>
          <![CDATA[

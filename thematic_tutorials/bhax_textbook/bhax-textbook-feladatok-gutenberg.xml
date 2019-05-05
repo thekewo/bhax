@@ -15,8 +15,59 @@
         <para>
 A programnyelvek három szintjét különböztetjük meg: gépi nyelv, assembly szintű nyelv, magas szintű nyelv. A magas
 szintő nyelven megírt programot forrásprogramnak, vagy forrásszövegnek nevezzük. Az összeállításra vonatkozó szabályokat szintaktikai, a jelentésbelieket pedig szemantikai szabályoknak nevezzük. Ezek a szabályok határozzák meg a programot. A fordító program a következő lépések alapján teszi a megírt kódot a számítógép álltal értelmezhetővé: lexikális,szintaktikai,szemantikai elemzés -> kódgenerálás. Vannak imperatív/algoritmikus és deklaratív/nem algoritmikus nyelvek. Olyan nyelvek is léteznek amelyek nem sorolhatóak be ezekbe a kategóriákba. Minden program forrásszövegének legkisebb alkotórészei a karakterek. A forrásszöveg összeállításánál alapvető a karakterkészlet, ennek elemei jelenhetnek meg az adott nyelv programjaiban, ezekből állíthatók össze a bonyolultabb nyelvi elemek. Az eljárásorientált nyelvek esetén ezek a következők: lexikális,fordítási és szintaktikai egységek, utasítások, programegységek, program. Egy nyelv saját karakterkészletében az alábbiak találhatóak: betűk,számjegyek,egyéb karakterek.
+
         </para>   
-        
+        <para>
+Szimbolikus nevek között vannak szabályosak( pl: x, almafa, hallgato_azonosito, SzemelyNev ) és olyanok amik nem elfogadhatóak azonosítóként( pl: x+y, 123abc, az első a + jel miatt hibás és a második pedig azért hibás, mert betűvel kell kezdődnie ). A C nyelvben az alábbiakat alapszavaknak nevezzük: if, for, case, break. És vannak még standard azonosítól mint például a NULL. Bármely végrehajtó utasítás megcímkézhető, ezeket a címkéket arra használhatjuk, hogy a program egy másik pontjáról hivatkozni tudjunk rá.     
+
+        </para>
+
+        <para>
+Megjegyzések elhelyezésére többféle lehetőségünk is van. A nyelvek egy része többféle megjegyzést is alkalmaz. Minnél több megjegzést írunk kódunkhoz, másnak annál egyszerűbb lesz értelmeznie. A literálokkal fix,explicit, pontos értékeket hozhatunk létre kódunkban. Fortranban például van: 
+-egész literál
+-valós literál
+-tizedestört valós literál
+-exponenciális valós literál
+-komplex literál
+-hexadecimális literál
+-logikai literál
+-szöveges literál
+-sztring literál
+C-ben pedig:
+-decimális literál
+-oktális
+-hexadecimális
+-előjel nélküli egész 
+-hosszú egész
+-valós literálok
+-karakter literál
+-sztring literál
+
+        </para>
+   
+        <para>
+A forrásszöveg összeállításakor különbözően járunk el a kötött és a szabad formátumú nyelvek esetén. Az adattípusok három dolgot határoznak meg: tartomány, műveletek, reprezentáció. Az adattípusokhoz tartozik egy megfelelő belső ábrázolási mód. A legtöbb nyelvben mi magunk is definiálhatunk ípusokat. A nevesített konstans három részből áll: név, típus, érték. Ezeket mindíg meg kell adni. A programban a neve szerepel, viszont az értékét fogja jelenteni. 
+        </para>
+
+        <para>
+A változónak négy része van: név, attribútumok, cím, érték. Itt is a nevét adjuk meg, viszont most mind a három másik komponenst is jelölheti.
+A kifejezések arra valók, hogy a kódunk egy pontján, a már ismert értékekből újjakat hozzunk létre. A konstans kifejezés a fordításkor fixálódik és később nem változhat. Különbőző operátortípusokat használhatunk: összeadás, kivonás, szorzás, osztás, maradékképzés.
+Az utasítások megadják az algoritmusok egyes lépéseit a fordítóprogram részére. Az értékadó utasítások megadják vagy módosítják egy változó értékét.
+
+        </para>
+   
+        <para>
+Egy hívási lánc úgy alakul ki, hogy egy programegység meghív egy másik programegységet, az pedig egy harmadikat és így tovább. Kétféle rekurzió lehetséges: közvetlen és közvetett. A kivételkezelési eszközrendszerrel kapcsolatban a nyelveknek erre a kérdésekre kell választ adniuk:
+1. Milyen beépített kivételek vannak a nyelvben?
+2. Definiálhat-e a programozó saját kivételt?
+3. Milyenek a kivételkezelı hatásköri szabályai?
+4. A kivételkezelés köthetı-e programelemekhez (kifejezés, utasítás, programegység)?
+5. Hogyan folytatódik a program a kivételkezelés után?
+6. Mi történik, ha kivételkezelıben következik be kivétel?
+7. Van-e a nyelvben beépített kivételkezelı?
+8. Van-e lehetıség arra, hogy bármely kivételt kezelı (általános) kivételkezelıt írjunk?
+9. Lehet-e parametrizálni a kivételkezelıt?
+        </para>        
 
     </section>        
     <section>
@@ -86,8 +137,90 @@ Megjegyzések mindenütt előfordulhatnak, ahol szóköz vagy újsor előfordulh
         <para> 
              A c++ a c nyelvre épül. Az első c++ fordítók c kódokat generáltak. A ma használt fordítók c és c++ ra is tudnak fordítani. C++ nyelvben az üres paraméterlista egy void paraméter megadásával egyenlő. C-ben így írnánk: void f(){} , C++-ban pedig: void f(void){}. C++-ban a main függvény kétféle képpen adhatjuk meg: int main(){}, int main(int argc, char* argv[]){}. Az argc-ben a parancssor-argumentumok számát, argv-ben pedig a parancssor-argumentumokat kapjuk. Ha nem írunk return-t, akkor a fordító autómatikusan return 0; utasítást fordít a kódba.
              A bool típus a logika igaz/hamis értéket képes jelenteni. Ezek a változók true vagy false érkéket vehetnek fel: bool a = true; bool b = false;. Minden olyan helyen állhat változódeklaráció, ahol utasítás állhat. C++ nyelven megadhatunk alapértelmezett függvényargumentumokat. Ha nem adunk meg saját értékeket, akkor ezek kerülnek felhasználásra.
-
+             A private és public jelölések mellett létezik még a friend és protected jelölések is.
+             Az osztályok a friend kulcsszóval feljogosíthatnak globális függvényeket a védett tagjaikhoz való hozzáférésre. 
+             Léteznek friend osztályok is, ez az osztály egy másik osztályt jogosít fel a védett tagjaihoz való hozzáféréshez.
         </para>
+        <para>
+            Az adatfolyam objektumoknak vannak tagfüggvényeik, amelyekkel beállíthatjuk az állapotát, adatokat olvashatunk, írhatunk. Az I/O manipulátor egy adatfolyam-módosító speciális objektum. Ezt az objektum a kiviteli és beviteli operátorok argumentumaként alkalmazzuk az adatfolyamra.
+            Vannak olyan manipulátorok, amelyeknek nincs paramétere: endl. Stringek formázására is különböző manipulátorok állnak rendelkezésre. A jelzőbitek olyan bitek, amelyeket beállíthatunk vagy törölhetünk. 
+        </para>
+       
+
+        <para>
+        C-ben függvények álltal visszaadott hibakódok vagy globális változóban az utolsó hibára vonatkozóan nyilvántartott hibakód alapján történik a hibakezelés. C++-ban a kivételek felhasználásával ennél sokkal átláthatóbb és könnyebben karbantartható hibakezelés érhető el.
+        A kivételkezelés biztosítja, hogy ha hibát találtunk valahol, akkor a futás azonnal a hibakezelő ágon folytatódjon.
+        </para>
+        <para>
+        A C++ sablonok olyan osztály/függvénysablonok, amelyek esetében az adott osztály, függvény definiálásakor bizonyos elemeket nem adunk meg, hanem paraméterként kezelünk. Tetszőleges típusú elem tárolására használható tárolóosztály létrehozására használjuk( pl vector).
+        A függvénysablon fejlécét template kulcsszóval kell kezdeni, majd két reláció jel közé kell felsorolni a paramétereket. 
+        A max függvénysablon implenetációja:
+           <programlisting language="c++"><![CDATA[
+                template <class T> inline T max(T a, b)
+                {
+                    return a > b ? a : b;
+                }
+        ]]></programlisting>
+        Függvénysablon implicit példányosítása.
+        <programlisting language="c++"><![CDATA[
+               int n = max(3,5);
+               double d = max(2.3,4.2);
+        ]]></programlisting>
+        A függvénysablont az első sor int, a második sor double típussal példányosítja. A T paramáter helyébe int, a második esetben 
+        double típus helyettesítődik.
+        Explicit példányosítás esetén, a T helyére a double-t helyettesíti és az int értéke is double-re konvertálódik.
+         <programlisting language="c++"><![CDATA[
+               double d = max<double>(3,3.5);
+        ]]></programlisting>
+
+    </para>
+    <para>
+        A kivételkezelésre példa:
+        </para>
+<programlisting language="tex"><![CDATA[
+#include <iostream>
+using namespace std;
+
+int main()
+{
+   try
+   {
+     double d;
+     cout <<"Enter a nonzero number: ";
+     cin >> d;
+     if (d==0)
+        throw "The number can not be zero.";
+      cout<<"The reciprocal is: "<<1/d<<endl;
+    }
+    catch (const char* exc)
+    {
+      cout<< " Error! The error text is: " << exc << endl;
+    }
+    cout<< "Done."<<endl;
+}
+]]></programlisting> 
+
+<para>
+A felhasználó nullát ad meg:
+        </para>
+
+<programlisting language="tex"><![CDATA[
+Enter a nonzero number: 0
+Error! The error text is: The number can not be zero.
+Done.
+]]></programlisting> 
+
+<para>
+A felhasználó nem nullát ad meg:
+        </para>
+
+<programlisting language="tex"><![CDATA[
+Enter a nonzero number: 2
+The reciprocal is: 0.5
+Done.
+]]></programlisting> 
+
+
 
 
 

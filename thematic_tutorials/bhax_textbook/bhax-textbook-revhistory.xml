@@ -34,4 +34,12 @@
             Aktualizálás, javítások.
         </revremark>
     </revision>
+    <revision>
+        <revnumber>0.0.5</revnumber>
+        <date>2019-05-05</date>
+        <authorinitials>thekewo</authorinitials>
+        <revremark>
+            Véglegesítés.
+        </revremark>
+    </revision>
 </revhistory>

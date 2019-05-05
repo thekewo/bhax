@@ -15,7 +15,7 @@
             Megoldás videó: <link xlink:href="https://bhaxor.blog.hu/2018/10/10/myrmecologist">https://bhaxor.blog.hu/2018/10/10/myrmecologist</link>
         </para>
         <para>
-            Megoldás forrása: <link xlink:href=""></link>               
+            Megoldás forrása: <link xlink:href ="https://github.com/thekewo/bhax/tree/master/thematic_tutorials/bhax_textbook/programs">https://github.com/thekewo/bhax/tree/master/thematic_tutorials/bhax_textbook/programs</link>               
         </para>
         <para>
         	q - kilépés
@@ -63,7 +63,7 @@ kewo@kewo-X540SA:~/Downloads/wat/bhax/attention_raising/Myrmecologist$ ./myrmeco
             Megoldás videó: 
         </para>
         <para>
-            Megoldás forrása: <link xlink:href=""></link>               
+            Megoldás forrása: <link xlink:href ="https://github.com/thekewo/bhax/tree/master/thematic_tutorials/bhax_textbook/programs">https://github.com/thekewo/bhax/tree/master/thematic_tutorials/bhax_textbook/programs</link>              
         </para>
         <programlisting language="java"><![CDATA[
         
@@ -210,7 +210,7 @@ kewo@kewo-X540SA:~/Downloads/wat/bhax/thematic_tutorials/bhax_textbook/programs/
             Megoldás videó: 
         </para>
         <para>
-            Megoldás forrása: <link xlink:href=""></link>               
+            Megoldás forrása: <link xlink:href ="https://github.com/thekewo/bhax/tree/master/thematic_tutorials/bhax_textbook/programs">https://github.com/thekewo/bhax/tree/master/thematic_tutorials/bhax_textbook/programs</link>             
         </para>
         <programlisting language="c++"><![CDATA[
 void SejtSzal::idoFejlodes() {
@@ -341,7 +341,7 @@ kewo@kewo-X540SA:~/Downloads/wat/bhax/thematic_tutorials/bhax_textbook/programs/
             Megoldás videó: 
         </para>
         <para>
-            Megoldás forrása: <link xlink:href=""></link>               
+            Megoldás forrása: <link xlink:href ="https://github.com/thekewo/bhax/tree/master/thematic_tutorials/bhax_textbook/programs">https://github.com/thekewo/bhax/tree/master/thematic_tutorials/bhax_textbook/programs</link>               
         </para>
         <para>
             A program célja az esportolók tesztelése, mennyire tudják követni a karakter mozgását. 

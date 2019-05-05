@@ -29,7 +29,7 @@
     
     <author>
         <personname>
-        	<honorific></honorific>
+        	
             <surname>Koós</surname>
             <firstname>Zoltán</firstname>        
         </personname>    
@@ -48,6 +48,7 @@
             <postcode>4241</postcode>
             <country>Magyarország</country>
         </address>
+
     </author> 
  
 </authorgroup>

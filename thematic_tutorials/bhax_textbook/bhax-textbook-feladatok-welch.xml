@@ -17,7 +17,7 @@
             Megoldás videó:
         </para>
         <para>
-            Megoldás forrása:                
+            Megoldás forrása:   <link xlink:href ="https://github.com/thekewo/bhax/tree/master/thematic_tutorials/bhax_textbook/programs">https://github.com/thekewo/bhax/tree/master/thematic_tutorials/bhax_textbook/programs</link>             
         </para>
         <para>
             Polártranszformáció segítségével random számokat fogunk kiszámolni. A feladatban felhasznált algoritmust a Java random szám
@@ -191,7 +191,7 @@ kewo@kewo-X540SA:~/Downloads/wat/bhax/thematic_tutorials/bhax_textbook/programs/
             Megoldás videó:
         </para>
         <para>
-            Megoldás forrása:                
+            Megoldás forrása:      <link xlink:href ="https://github.com/thekewo/bhax/tree/master/thematic_tutorials/bhax_textbook/programs">https://github.com/thekewo/bhax/tree/master/thematic_tutorials/bhax_textbook/programs</link>          
         </para>
         <para>
         	Az LZW algoritmus egy tömörítő eljárás. A bemeneti 1 és 0-ákból egy bináris fát épít. A fa felépítésekor mindig ellenőrzi van-e már 0-ás vagy 1-es gyermek. Ha nincs, akkor létrehoz egyet és visszaugrik a gyökérre. Ha van, akkor a 0-ás vagy 1-es gyermekre lép. Addig lépked lefele a fában, amíg nem talál egy olyan részfát, ahol létre kellene hozni egy új gyermeket. A létrehozás után visszaugrik a gyökérre.
@@ -445,7 +445,7 @@ szoras=0.000000
             Megoldás videó:
         </para>
         <para>
-            Megoldás forrása:                
+            Megoldás forrása:   <link xlink:href ="https://github.com/thekewo/bhax/tree/master/thematic_tutorials/bhax_textbook/programs">https://github.com/thekewo/bhax/tree/master/thematic_tutorials/bhax_textbook/programs</link>             
         </para>       
     <para>Elsőként megnézzük, hogy a bejárandó fa nem üres.Ha nem üres, akkor inorder-el végigmegyünk a gyökérelem jobb oldali részfáján, feldolgozzuk a gyökérelemet . Végül végigmegyünk a bal oldali részfán.</para> 
 <screen>
@@ -517,7 +517,7 @@ szoras=0.000000
             Megoldás videó:
         </para>
         <para>
-            Megoldás forrása:                
+            Megoldás forrása: <link xlink:href ="https://github.com/thekewo/bhax/tree/master/thematic_tutorials/bhax_textbook/programs">https://github.com/thekewo/bhax/tree/master/thematic_tutorials/bhax_textbook/programs</link>               
         </para>
         <para>
   A fa gyökere egy objektum, a fa pedig a mutató. Ez a mutató mindig az épülő fa aktuális csomópontjára mutat. 
@@ -695,7 +695,7 @@ kewo@kewo-X540SA:~/Downloads/wat/bhax/thematic_tutorials/bhax_textbook/programs/
             Megoldás videó: 
         </para>
         <para>
-            Megoldás forrása:  
+            Megoldás forrása:  <link xlink:href ="https://github.com/thekewo/bhax/tree/master/thematic_tutorials/bhax_textbook/programs">https://github.com/thekewo/bhax/tree/master/thematic_tutorials/bhax_textbook/programs</link>
         </para>
         <para>
   Elsőként átírjuk a gyoker-t mutatóra. Ezután a konstruktorban a gyoker mutatónkat és a fa mutatót is ráállítjuk egy most lefoglalt területre. A destruktort is változtatjuk, hogy ezt a lefoglalt területet később felszabadítsuk. Mivel a gyoker mostmár mutató, ezért a gyoker álltal mutatott csomópont 0 és 1 es gyermekére kell meghívnunk a szabadit függvényt. Ezek után ahol a fordítás során hibát kapunk ki kell törölnünk az <![CDATA[&]]> operátort és már készen is vagyunk. 
@@ -738,7 +738,7 @@ public:
             Megoldás videó: 
         </para>
         <para>
-            Megoldás forrása:  
+            Megoldás forrása:  <link xlink:href ="https://github.com/thekewo/bhax/tree/master/thematic_tutorials/bhax_textbook/programs">https://github.com/thekewo/bhax/tree/master/thematic_tutorials/bhax_textbook/programs</link>
         </para>
         <programlisting language="c++"><![CDATA[
     LZWBinFa (LZWBinFa&& forras)
