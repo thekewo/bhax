@@ -757,9 +757,10 @@ public:
             </programlisting>
 
         <para>
-            A mozgató konstruktorban meghívjuk a mozgató értékadást. A fát átmásoljuk és az eredetit kinullázzuk.
-            Ahova az erdeti fánkat akarjuk mozgatni, a gyökér mutatóját kinullázzuk. Ezután meghívjuk a mozgató értékadást úgy, hogy az argumentumként 
-            átadott fát egyenlővé tesszük a cél fával. A mozgató értékadásban pedig megcseréljük a cél fa gyökerének és a forrás fa gyökerének az értékét. Mivel a forrásunk gyökerét kinulláztuk és meg szeretnénk hívni a szabadit függvényt annak a gyökérnek az 1 és 0-ás gyermekére, ami nem mutat semmire, ezért módosítanunk kell a konstruktort, hogy ezek az utasítások csak akkor menjenek végbe, ha a gyökér mutató nincs kinullázva.
+            Ahova az erdeti fánkat akarjuk mozgatni, a gyökér mutatóját kinullázzuk.
+            A mozgató konstruktorban a move függvénnyel jobbértékké tesszük az átadott argumentumot, mellyel meghívjuk a mozgató értékadást. 
+            Ezután meghívódik a mozgató értékadás úgy, hogy az argumentumként 
+            átadott fát egyenlővé tesszük a cél fával. A mozgató értékadásban pedig megcseréljük a cél fa gyökerének és a forrás fa gyökerének az értékét. Mivel a forrásunk gyökerét kinulláztuk és meg szeretnénk hívni a szabadit függvényt annak a gyökérnek az 1 és 0-ás gyermekére, ami nem mutat semmire, ezért módosítanunk kell a konstruktort, hogy ezek az utasítások csak akkor menjenek végbe, ha a gyökér mutató nincs kinullázva. 
         </para>
         <programlisting language="c++"><![CDATA[
     ~LZWBinFa ()

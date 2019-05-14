@@ -36,10 +36,82 @@
     </revision>
     <revision>
         <revnumber>0.0.5</revnumber>
+        <date>2019-03-08</date>
+        <authorinitials>thekewo</authorinitials>
+        <revremark>
+            Turing.
+        </revremark>
+    </revision>
+    <revision>
+        <revnumber>0.0.6</revnumber>
+        <date>2019-03-17</date>
+        <authorinitials>thekewo</authorinitials>
+        <revremark>
+            Chomsky.
+        </revremark>
+    </revision>
+    <revision>
+        <revnumber>0.0.7</revnumber>
+        <date>2019-03-24</date>
+        <authorinitials>thekewo</authorinitials>
+        <revremark>
+            Caesar.
+        </revremark>
+    </revision>
+    <revision>
+        <revnumber>0.0.8</revnumber>
+        <date>2019-03-31</date>
+        <authorinitials>thekewo</authorinitials>
+        <revremark>
+            Mandelbrot.
+        </revremark>
+    </revision>
+    <revision>
+        <revnumber>0.0.9</revnumber>
+        <date>2019-04-07</date>
+        <authorinitials>thekewo</authorinitials>
+        <revremark>
+            Welch.
+        </revremark>
+    </revision>
+    <revision>
+        <revnumber>0.0.10</revnumber>
+        <date>2019-04-14</date>
+        <authorinitials>thekewo</authorinitials>
+        <revremark>
+            Conway.
+        </revremark>
+    </revision>
+    <revision>
+        <revnumber>0.0.11</revnumber>
+        <date>2019-04-21</date>
+        <authorinitials>thekewo</authorinitials>
+        <revremark>
+            Schwarzenegger.
+        </revremark>
+    </revision>
+    <revision>
+        <revnumber>0.0.12</revnumber>
+        <date>2019-04-28</date>
+        <authorinitials>thekewo</authorinitials>
+        <revremark>
+            Chaitin.
+        </revremark>
+    </revision>
+    <revision>
+        <revnumber>0.1.0</revnumber>
         <date>2019-05-05</date>
         <authorinitials>thekewo</authorinitials>
         <revremark>
-            Véglegesítés.
+            Végleges.
+        </revremark>
+    </revision>
+    <revision>
+        <revnumber>0.1.1</revnumber>
+        <date>2019-05-14</date>
+        <authorinitials>thekewo</authorinitials>
+        <revremark>
+            Javítás.
         </revremark>
     </revision>
 </revhistory>
